@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javier Roman Heider — Sistemas & Ciberseguridad</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#1B2A4A;--navy-light:#243554;--accent:#2E7BF6;--accent-dim:rgba(46,123,246,0.12);
+    --white:#ffffff;--gray:#8A94A6;--dark:#0D1526;--card-bg:#1e2f50;
+    --border:rgba(46,123,246,0.2);--border-subtle:rgba(255,255,255,0.06);
+    --mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--dark);color:var(--white);line-height:1.6}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,21,38,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-logo{font-family:var(--mono);font-size:14px;color:var(--accent)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--gray);text-decoration:none;font-size:14px;transition:color .2s}
+  .nav-links a:hover{color:var(--white)}
+
+  .hero{min-height:100vh;display:flex;align-items:center;padding:6rem 6% 4rem;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(46,123,246,0.07) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;width:100%}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;font-family:var(--mono);color:var(--accent);margin-bottom:1.5rem}
+  .hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+  .hero h1{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1rem;letter-spacing:-.02em}
+  .hero h1 span{color:var(--accent)}
+  .hero-subtitle{font-size:1.05rem;color:var(--gray);margin-bottom:2rem;line-height:1.8}
+  .hero-subtitle strong{color:var(--white)}
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:500;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+  .btn-primary{background:var(--accent);color:var(--white)}
+  .btn-primary:hover{background:#1a65e0;transform:translateY(-1px)}
+  .btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2)}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+  .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.5rem}
+  .tag{background:var(--navy-light);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .hero-photo-wrap{display:flex;justify-content:center}
+  .hero-photo-ring{width:300px;height:300px;border-radius:50%;border:2px solid var(--border);padding:6px;position:relative}
+  .hero-photo-ring::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(46,123,246,0.12)}
+  .hero-photo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top center}
+
+  section{padding:5rem 6%}
+  .section-inner{max-width:1100px;margin:0 auto}
+  .section-label{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em}
+  .section-divider{width:40px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:3rem}
+
+  #historia{background:var(--navy)}
+  .historia-intro{max-width:720px;margin:0 auto 3.5rem;font-size:1.1rem;color:var(--gray);line-height:1.9;text-align:center}
+  .historia-intro strong{color:var(--white)}
+  .historia-intro em{color:var(--accent);font-style:normal}
+  .cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .story-card{background:var(--card-bg);border:1px solid var(--border-subtle);border-radius:14px;padding:1.75rem;position:relative;overflow:hidden;transition:border-color .2s}
+  .story-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);opacity:.4}
+  .story-card:hover{border-color:var(--border)}
+  .story-num{font-family:var(--mono);font-size:2.5rem;font-weight:700;color:rgba(46,123,246,0.15);line-height:1;margin-bottom:1rem}
+  .story-card h3{font-size:1rem;font-weight:600;margin-bottom:.75rem}
+  .story-card p{font-size:13.5px;color:var(--gray);line-height:1.75}
+  .story-card p strong{color:var(--white)}
+
+  #sobre-mi{background:var(--dark)}
+  .sobre-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start}
+  .sobre-text{font-size:15px;color:var(--gray);line-height:1.85}
+  .sobre-text p{margin-bottom:1.1rem}
+  .sobre-text strong{color:var(--white)}
+  .quote-block{border-left:3px solid var(--accent);padding-left:1.25rem;margin:1.5rem 0;font-size:.95rem;color:var(--white);line-height:1.7;font-style:italic}
+  .side-panel{display:flex;flex-direction:column;gap:1rem}
+  .info-card{background:var(--navy-light);border:1px solid var(--border-subtle);border-radius:12px;padding:1.25rem}
+  .info-card-label{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+  .info-card-content{font-size:14px;color:var(--white);line-height:1.7}
+  .info-card-content span{color:var(--gray)}
+  .hobby-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .hobby-pill{background:rgba(46,123,246,0.1);border:1px solid rgba(46,123,246,0.2);border-radius:20px;padding:5px 14px;font-size:13px;color:var(--white)}
+  .value-list{list-style:none}
+  .value-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--gray);margin-bottom:.6rem;line-height:1.5}
+  .value-list li::before{content:'→';color:var(--accent);flex-shrink:0;margin-top:1px}
+  .value-list li strong{color:var(--white)}
+
+  #projects{background:var(--navy)}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+  .project-card{background:var(--card-bg);border:1px solid var(--border-subtle);border-radius:12px;padding:1.5rem;transition:border-color .2s,transform .2s;display:flex;flex-direction:column}
+  .project-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .project-card.featured{border-color:rgba(46,123,246,0.4);background:#1a2e55;grid-column:span 2}
+  .project-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
+  .project-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px}
+  .project-link{color:var(--gray);text-decoration:none;font-size:12px;font-family:var(--mono);padding:4px 10px;border:1px solid rgba(255,255,255,0.1);border-radius:6px;transition:all .2s}
+  .project-link:hover{color:var(--accent);border-color:var(--accent)}
+  .project-badge{display:inline-block;background:var(--accent);color:var(--white);font-size:10px;font-family:var(--mono);padding:3px 8px;border-radius:4px;margin-bottom:.5rem}
+  .project-title{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+  .project-desc{font-size:13.5px;color:var(--gray);line-height:1.65;flex:1;margin-bottom:1rem}
+  .project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+  .project-tag{background:rgba(46,123,246,0.08);border:1px solid rgba(46,123,246,0.15);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:11px;color:var(--accent)}
+
+  #skills{background:var(--dark)}
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .skill-group{background:var(--navy-light);border:1px solid var(--border-subtle);border-radius:12px;padding:1.5rem}
+  .skill-group-title{font-size:11px;font-family:var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.25rem}
+  .skill-item{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
+  .skill-name{font-size:13px;color:var(--white)}
+  .skill-dots{display:flex;gap:4px}
+  .dot{width:7px;height:7px;border-radius:50%}
+  .dot.filled{background:var(--accent)}
+  .dot.empty{background:rgba(46,123,246,0.18)}
+
+  #contact{background:var(--navy)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+  .contact-intro{font-size:15px;color:var(--gray);line-height:1.85}
+  .contact-intro p{margin-bottom:1rem}
+  .contact-intro strong{color:var(--white)}
+  .contact-links{display:flex;flex-direction:column;gap:1rem}
+  .contact-item{display:flex;align-items:center;gap:1rem;background:var(--card-bg);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem 1.25rem;text-decoration:none;color:var(--white);transition:border-color .2s}
+  .contact-item:hover{border-color:var(--accent)}
+  .contact-item-icon{width:38px;height:38px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+  .contact-label{font-size:11px;color:var(--gray);font-family:var(--mono)}
+  .contact-value{font-size:14px;font-weight:500;margin-top:2px}
+
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border-subtle);font-family:var(--mono);font-size:12px;color:var(--gray)}
+
+  @media(max-width:768px){
+    .hero-grid,.sobre-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-photo-wrap{order:-1}
+    .hero-photo-ring{width:220px;height:220px}
+    .cards-row,.skills-grid{grid-template-columns:1fr}
+    .project-card.featured{grid-column:span 1}
+    nav{padding:0 1rem}
+    .nav-links{gap:1rem}
+    .nav-links a{font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">javier-roman ~$</div>
+  <ul class="nav-links">
+    <li><a href="#historia">Mi historia</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">Disponible para trabajar</div>
+      <h1>Javier<br>Roman <span>Heider</span></h1>
+      <p class="hero-subtitle">
+        Técnico en <strong>Sistemas, Redes y Ciberseguridad</strong>.<br>
+        Especialización en Red Team y Pentesting.<br>
+        Construyo, rompo y aprendo — cada día algo nuevo.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+        <a href="https://github.com/Javier-roman" target="_blank" class="btn btn-outline">GitHub</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">Linux</span><span class="tag">Python</span><span class="tag">Kali</span>
+        <span class="tag">Docker</span><span class="tag">Proxmox</span><span class="tag">CTF</span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <img src="photo.jpg" alt="Javier Roman Heider" onerror="this.style.background='var(--navy-light)'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="section-inner">
+    <p class="section-label">// mi historia</p>
+    <h2 class="section-title">Por qué hago lo que hago</h2>
+    <div class="section-divider"></div>
+    <p class="historia-intro">
+      No elegí la ciberseguridad por descarte ni por salidas laborales.<br>
+      La elegí porque buscaba algo <strong>ambicioso, en constante cambio</strong> — algo que me
+      obligara a pensar diferente cada día. Algo que <em>nunca se volviera rutina</em>.
+    </p>
+    <div class="cards-row">
+      <div class="story-card">
+        <div class="story-num">01</div>
+        <h3>El foco que buscaba</h3>
+        <p>La primera vez que resolví un reto de seguridad entendí lo que era el estado de flujo: <strong>concentración máxima, adrenalina y disfrute al mismo tiempo</strong>. Es esa sensación la que me hace seguir aprendiendo fuera del horario, por pura pasión.</p>
+      </div>
+      <div class="story-card">
+        <div class="story-num">02</div>
+        <h3>Estudié y trabajé a la vez</h3>
+        <p>Trabajé los veranos para <strong>ayudar a mi familia</strong> sin que nadie me lo pidiera. No fue un sacrificio — fue una decisión. Eso me enseñó a gestionar la presión, priorizar y no poner excusas cuando las cosas se complican.</p>
+      </div>
+      <div class="story-card">
+        <div class="story-num">03</div>
+        <h3>Lo que quiero aportar</h3>
+        <p>No busco solo mantener sistemas funcionando. Quiero <strong>ofrecer herramientas reales</strong> que hagan el día a día de las personas más fácil, más seguro y mejor. La tecnología tiene que servir a la gente, no al revés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <div class="section-inner">
+    <p class="section-label">// sobre mí</p>
+    <h2 class="section-title">Más allá del técnico</h2>
+    <div class="section-divider"></div>
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <p>Tengo 21 años, soy de Badalona y acabo de terminar el <strong>TCFGS en Administración de Sistemas y Redes con especialización en Ciberseguridad</strong> en IFP Barcelona, con foco en Red Team y Pentesting.</p>
+        <p>Soy una persona <strong>familiar y cercana</strong>. Trabajo con la misma energía tanto en equipo como en solitario, y me implico de verdad en lo que hago — no porque me lo exijan, sino porque así soy.</p>
+        <div class="quote-block">
+          "Si un compañero tuviera que describirme en tres palabras serían: apasionado, con ganas de aportar, y familiar."
+        </div>
+        <p>Fuera del trabajo me encontrarás haciendo deporte, en la naturaleza o viendo el fútbol. Creo que <strong>desconectar bien es parte de conectar bien</strong> cuando toca.</p>
+        <p>Hablo castellano y catalán como nativos, inglés avanzado y alemán intermedio.</p>
+      </div>
+      <div class="side-panel">
+        <div class="info-card">
+          <div class="info-card-label">Fuera del trabajo</div>
+          <div class="hobby-list">
+            <span class="hobby-pill">⚽ Fútbol</span>
+            <span class="hobby-pill">🏃 Deporte</span>
+            <span class="hobby-pill">🌲 Naturaleza</span>
+            <span class="hobby-pill">🏕️ Montaña</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Cómo trabajo</div>
+          <ul class="value-list">
+            <li><strong>Me implico de verdad</strong> — no hago las cosas a medias</li>
+            <li><strong>Aprendo fuera del horario</strong> — CTFs, labs, proyectos propios</li>
+            <li><strong>Pienso como el atacante</strong> — para defender mejor</li>
+            <li><strong>Comunico claro</strong> — con técnicos y no técnicos</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Ubicación</div>
+          <div class="info-card-content">
+            Badalona / Premià de Mar<br>
+            <span>Disponible zona Barcelona y remoto</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Idiomas</div>
+          <div class="info-card-content">
+            Castellano — <span>Nativo</span><br>
+            Catalán — <span>Nativo</span><br>
+            Inglés — <span>Avanzado</span><br>
+            Alemán — <span>Intermedio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">// proyectos</p>
+    <h2 class="section-title">Lo que he construido</h2>
+    <div class="section-divider"></div>
+    <div class="projects-grid">
+      <div class="project-card featured">
+        <div class="project-header">
+          <div class="project-icon">🌋</div>
+          <a href="https://github.com/Javier-roman/lava-entropy" target="_blank" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-badge">⭐ Proyecto estrella</div>
+        <div class="project-title">Lava Entropy RNG</div>
+        <p class="project-desc">Generador de entropía criptográfica basado en el movimiento caótico de una lámpara de lava — el mismo principio que usa Cloudflare en producción para asegurar millones de conexiones TLS. Captura visual en tiempo real, extracción de entropía y generación de claves criptográficamente seguras.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span><span class="project-tag">OpenCV</span>
+          <span class="project-tag">Criptografía</span><span class="project-tag">Linux</span>
+          <span class="project-tag">Raspberry Pi</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🏴</div>
+          <a href="https://github.com/Javier-roman/hacking-labs-vol1" target="_blank" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Hacking Labs Vol.1</div>
+        <p class="project-desc">Laboratorios de penetración testing y CTFs documentados. Writeups con metodología, herramientas y lecciones aprendidas en cada reto.</p>
+        <div class="project-tags">
+          <span class="project-tag">Kali Linux</span><span class="project-tag">CTF</span><span class="project-tag">Pentesting</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🏴</div>
+          <a href="https://github.com/Javier-roman/hacking-labs-vol2" target="_blank" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Hacking Labs Vol.2</div>
+        <p class="project-desc">Segunda entrega de laboratorios de seguridad ofensiva. Técnicas avanzadas de explotación, escalada de privilegios y post-explotación.</p>
+        <div class="project-tags">
+          <span class="project-tag">Red Team</span><span class="project-tag">Metasploit</span><span class="project-tag">Priv. Escalation</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🌐</div>
+          <a href="https://github.com/Javier-roman/networks-web-infrastructure" target="_blank" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Network & Web Infrastructure</div>
+        <p class="project-desc">Diseño de redes, simulación IPv6 y proyecto de infraestructura IT completa con documentación técnica de arquitectura y configuración.</p>
+        <div class="project-tags">
+          <span class="project-tag">IPv6</span><span class="project-tag">Redes</span><span class="project-tag">Infraestructura</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🔬</div>
+          <a href="https://github.com/Javier-roman/network-simulation-lab" target="_blank" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Network Simulation Lab</div>
+        <p class="project-desc">Topologías de red simuladas en Cisco Packet Tracer. VLANs, routing, switching y configuración de dispositivos de red reales.</p>
+        <div class="project-tags">
+          <span class="project-tag">Cisco</span><span class="project-tag">Packet Tracer</span><span class="project-tag">VLANs</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🏥</div>
+          <a href="https://github.com/Javier-roman/aupy-dental-clinic" target="_blank" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Dental Clinic Manager</div>
+        <p class="project-desc">App web full-stack para gestión de clínica dental. Backend Node.js y MySQL, desplegado en contenedores Docker.</p>
+        <div class="project-tags">
+          <span class="project-tag">Node.js</span><span class="project-tag">MySQL</span><span class="project-tag">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">// habilidades</p>
+    <h2 class="section-title">Stack técnico</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Sistemas & Virtualización</div>
+        <div class="skill-item"><span class="skill-name">Linux (Admin)</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Virtualización (Proxmox/VMware)</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Windows Server / AD</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Docker</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Ciberseguridad</div>
+        <div class="skill-item"><span class="skill-name">Pentesting / Red Team</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Kali Linux</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Nmap / Wireshark</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Metasploit</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div><div class="dot empty"></div></div></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Dev & Redes</div>
+        <div class="skill-item"><span class="skill-name">Python / Bash / PS</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div></div>
+        <div class="skill-item"><span class="skill-name">HTML / CSS / JS</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div><div class="dot empty"></div></div></div>
+        <div class="skill-item"><span class="skill-name">MySQL / PostgreSQL</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Redes LAN/WAN</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div><div class="dot empty"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">// contacto</p>
+    <h2 class="section-title">Hablemos</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p style="font-size:1.1rem;color:var(--white);margin-bottom:1rem;">Estoy buscando mi primer trabajo técnico en sistemas, redes o ciberseguridad.</p>
+        <p>No busco solo un trabajo — busco un equipo donde pueda <strong>aportar desde el primer día</strong> y crecer junto a personas que también se toman en serio lo que hacen.</p>
+        <p style="margin-top:1rem;">Si eso encaja con lo que tienes, escríbeme. <strong>Respondo rápido.</strong></p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:javieroman1972@gmail.com" class="contact-item">
+          <div class="contact-item-icon">✉</div>
+          <div><div class="contact-label">Email</div><div class="contact-value">javieroman1972@gmail.com</div></div>
+        </a>
+        <a href="tel:687765822" class="contact-item">
+          <div class="contact-item-icon">☎</div>
+          <div><div class="contact-label">Teléfono</div><div class="contact-value">687 765 822</div></div>
+        </a>
+        <a href="https://github.com/Javier-roman" target="_blank" class="contact-item">
+          <div class="contact-item-icon" style="font-family:monospace;font-size:14px;font-weight:600;">&lt;/&gt;</div>
+          <div><div class="contact-label">GitHub</div><div class="contact-value">github.com/Javier-roman</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Javier Roman Heider · Sistemas & Ciberseguridad · Barcelona · 2025</p>
+</footer>
+
+</body>
+</html>
