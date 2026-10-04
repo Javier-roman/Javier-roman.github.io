@@ -584,6 +584,7 @@ function buildIndex() {
         ${E.experience.map((x) => `<article class="exp-item">
           <div class="exp-item__top"><h4 class="exp-item__title">${esc(x.title)}</h4><span class="exp-item__when">${esc(x.when)}</span></div>
           <p class="exp-item__org">${esc(x.org)}</p>
+          ${x.about ? `<p class="exp-item__about">${md(x.about)}</p>` : ''}
           <ul>${x.points.map((p) => `<li>${md(p)}</li>`).join('')}</ul>
         </article>`).join('\n        ')}
       </div>

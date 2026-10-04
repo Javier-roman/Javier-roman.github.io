@@ -843,6 +843,7 @@ html.lenis, html.lenis body { height: auto; }
 .exp-item__title { font: 700 18px/1.25 var(--font-display); font-stretch: 108%; }
 .exp-item__when { font: 500 var(--fs-meta)/1 var(--font-mono); color: var(--text-2); white-space: nowrap; }
 .exp-item__org { margin-top: 6px; font-size: var(--fs-small); color: var(--text-2); }
+.exp-item__about { margin-top: 2px; font-size: var(--fs-small); color: var(--text-2); }
 .exp-item ul { margin-top: 12px; display: grid; gap: 6px; }
 .exp-item li { position: relative; padding-left: 18px; font-size: var(--fs-small); color: var(--text-2); }
 .exp-item li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1px; background: var(--accent); }

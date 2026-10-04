@@ -1100,7 +1100,7 @@
         "mark": "CyberHack · 2025",
         "title": "El momento en que todo encajó",
         "big": "Concentración máxima, adrenalina y disfrute al mismo tiempo.",
-        "text": "Fue en 2025, en la CyberHack, una hackatón organizada por ENTI, cuando estaba en segundo del grado superior. Era una carrera contra el reloj, y esa sensación es la que me hace seguir aprendiendo fuera del horario."
+        "text": "Fue en 2025, en la CyberHack, una hackatón organizada por ENTI, cuando estaba en segundo del grado superior. Llegamos a la semifinal. Era una carrera contra el reloj, y esa sensación es la que me hace seguir aprendiendo fuera del horario."
       },
       {
         "n": "05",
@@ -1239,10 +1239,11 @@
         "when": "2025–2026",
         "title": "Técnico IT (prácticas FCT)",
         "org": "Matrix DV · Barcelona",
+        "about": "Empresa de software propio de automatización de facturas para contabilidad.",
         "points": [
-          "Soporte y mantenimiento de los sistemas de la empresa.",
-          "Configuración e implantación de software de automatización de facturación.",
-          "Gestión de usuarios y permisos, y resolución de incidencias IT."
+          "Instalación y configuración del software de la empresa.",
+          "Atención de tickets de soporte y resolución de incidencias IT.",
+          "Mantenimiento de los sistemas y gestión de usuarios y permisos."
         ]
       },
       {
@@ -1394,11 +1395,11 @@
       {
         "title": "Técnico IT (prácticas FCT), Matrix DV",
         "when": "2025–2026",
+        "detail": "Empresa de software propio de automatización de facturas para contabilidad",
         "where": "Barcelona",
         "points": [
-          "Di soporte y mantenimiento a los sistemas de la empresa.",
-          "Configuré e implanté software de automatización de facturación.",
-          "Gestioné usuarios y permisos, y resolví incidencias IT."
+          "Instalé y configuré el software de la empresa y mantuve sus sistemas.",
+          "Atendí tickets de soporte, resolví incidencias IT y gestioné usuarios y permisos."
         ]
       },
       {
@@ -1438,7 +1439,7 @@
         "where": "GitHub",
         "points": [
           "Documenté laboratorios y retos CTF en informes con metodología y mitigaciones.",
-          "Participé en la CyberHack 2025, la hackatón de ciberseguridad de ENTI."
+          "Semifinalista con mi equipo en la CyberHack 2025, la hackatón de ciberseguridad de ENTI."
         ],
         "link": "javier-roman.github.io/trabajos/hacking-labs-vol-1",
         "href": "https://javier-roman.github.io/trabajos/hacking-labs-vol-1.html"
