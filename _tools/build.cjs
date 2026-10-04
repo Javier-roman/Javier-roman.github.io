@@ -420,7 +420,7 @@ function buildIndex() {
   <div class="hero__stage">
     <div class="hero__scene">
       <picture>
-        <source media="(max-width: 999px)" srcset="assets/scene-mobile.webp" type="image/webp">
+        <source media="(max-width: 999px)" srcset="assets/scene-mobile.webp" width="900" height="1000" type="image/webp">
         <img class="hero__poster" src="assets/scene-desktop.webp" alt="${esc(UI.sceneAlt)}" width="1600" height="1000" fetchpriority="high" decoding="async">
       </picture>
       <canvas class="hero__canvas" aria-hidden="true"${avatar ? ` data-avatar="${avatar}"` : ''}></canvas>
