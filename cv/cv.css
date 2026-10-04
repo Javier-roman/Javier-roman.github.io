@@ -146,6 +146,12 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
 .cv-leaders dd { flex: none; font-style: italic; font-weight: 600; text-align: right; }
 .cv-sec--langs .cv-leaders { grid-template-columns: repeat(4, 1fr); column-gap: 6mm; }
 
+@media screen and (max-width: 840px) {
+  .page { width: auto; min-height: 0; margin: 0; padding: 22px 16px 28px; box-shadow: none; }
+  .cv-leaders, .cv-sec--langs .cv-leaders { grid-template-columns: minmax(0, 1fr); }
+  .cv-leaders div { min-width: 0; }
+  .cv-leaders dd { white-space: normal; text-align: right; }
+}
 @media print {
   body { background: #fff; }
   .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; overflow: hidden; }

@@ -138,7 +138,7 @@ function footer(prefix, inPage) {
     <span class="site-footer__exit">${esc(P.brand)} ${esc(F.exit)}</span>
     <span>${esc(F.line)}</span>
     <span>${esc(F.copy)}</span>
-    <a href="${inPage ? '' : prefix}#inicio">${esc(UI.toTop)} ↑</a>
+    <a href="${inPage ? '#inicio' : '#main'}">${esc(UI.toTop)} ↑</a>
   </div>
 </footer>
 <div class="grain" aria-hidden="true"></div>`;
@@ -668,7 +668,7 @@ ${chrome(prefix, false)}
       <h1 class="case-hero__title" style="--len:${longest}" data-scramble>${esc(it.name)}</h1>
       <p class="case-hero__one">${md(it.oneLiner)}</p>
       <dl class="facts">${it.facts.map((f) => `<div><dt>${esc(f.k)}</dt><dd>${md(f.v)}</dd></div>`).join('')}</dl>
-      <div class="case-hero__actions">${repoBtn}${related}<a class="link-arrow" href="../#trabajos">${esc(UI.backToWork)} ${ICON.arrow}</a></div>
+      <div class="case-hero__actions">${repoBtn}${related}</div>
     </header>
     <div class="container case-visual reveal">
       ${visual(it)}
@@ -708,7 +708,7 @@ ${chrome(prefix, false)}
     <h1 class="display display--m">${esc(UI.notFoundTitle)}</h1>
     <p class="notfound__term"><b>${esc(P.brand)} ~$</b> cd ruta-perdida<br>cd: no such file or directory</p>
     <p class="section-head__intro" style="margin-top:18px">${esc(UI.notFoundText)}</p>
-    <p style="margin-top:28px"><a class="btn" href="./">${esc(UI.notFoundCta)} ${ICON.arrow}</a></p>
+    <p style="margin-top:28px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center"><a class="btn" href="./">${esc(UI.notFoundCta)} ${ICON.arrow}</a><a class="link-arrow" href="./#trabajos">${esc(UI.notFoundWork)} ${ICON.arrow}</a></p>
   </div>
 </main>
 <div class="grain" aria-hidden="true"></div>

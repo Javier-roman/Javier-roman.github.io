@@ -72,7 +72,8 @@
     "notFoundTitle": "Ruta no encontrada",
     "notFoundText": "Esta página no existe (todavía). Vuelve al inicio o echa un vistazo a mis trabajos.",
     "notFoundCta": "Volver al inicio",
-    "noCode": "Sin código todavía"
+    "noCode": "Sin código todavía",
+    "notFoundWork": "Ver mis trabajos"
   },
   "hero": {
     "steps": [
