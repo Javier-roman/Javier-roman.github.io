@@ -110,7 +110,6 @@ code { font-family: var(--font-mono); font-size: 0.88em; color: var(--text); bac
 ::selection { background: var(--accent); color: var(--accent-ink); }
 
 h1, h2, h3, .display, .chapter__big, .case-hero__lead, .section-head__intro, .now__lead { text-wrap: balance; }
-p, li, dd, figcaption { text-wrap: pretty; }
 
 /* Foco visible en todo lo interactivo */
 :focus { outline: none; }
