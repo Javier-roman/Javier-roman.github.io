@@ -25,11 +25,12 @@ export function createWave({ hero, steps }) {
   let vw = innerWidth, vh = innerHeight, resizedAt = 0;
   let lateAt = 0;
 
-  // ¿Cargó arriba del todo? En recargas, «atrás» o con ancla el navegador puede restaurar el scroll
-  // después: en esos casos se decide con la primera interacción real (antes de que mueva nada)
+  // ¿Cargó arriba del todo? Una navegación nueva sin ancla siempre empieza arriba (aunque este módulo
+  // llegue tarde y el visitante ya haya bajado). En recargas, «atrás» o con ancla el navegador puede
+  // restaurar el scroll: ahí se decide con la primera interacción real (antes de que mueva nada)
   const nav = performance.getEntriesByType?.('navigation')?.[0];
   const fresh = (!nav || nav.type === 'navigate') && !location.hash;
-  let atTop = fresh && window.scrollY < 4;
+  let atTop = fresh;
   if (!fresh) {
     const evs = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
     const first = () => { if (window.scrollY < 4) atTop = true; evs.forEach((e) => removeEventListener(e, first, true)); };
