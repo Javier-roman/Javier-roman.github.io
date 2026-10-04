@@ -96,6 +96,7 @@ function head({ prefix, title, description, canonical, ogType = 'website', impor
 <link rel="apple-touch-icon" href="${prefix}assets/apple-touch-icon.png">
 <link rel="preload" href="${prefix}fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${prefix}fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${prefix}fonts/jetbrains-mono-var.woff2" as="font" type="font/woff2" crossorigin>
 ${preloadImg ? preloadImg + '\n' : ''}<link rel="stylesheet" href="${prefix}css/main.css">
 <script>(function(d,w){var h=d.documentElement,m=function(q){return w.matchMedia(q).matches};h.classList.remove('no-js');h.classList.add('js');var r=m('(prefers-reduced-motion: reduce)');if(!r)h.classList.add('motion');if(!r&&m('(min-width: 1000px) and (min-height: 600px)')&&d.querySelector&&${importmap ? 'true' : 'false'})h.classList.add('pin');})(document,window);</script>
 ${importmap ? `<script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","three/addons/":"./vendor/three/addons/"}}</script>\n` : ''}<script type="module" src="${prefix}js/main.js"></script>
