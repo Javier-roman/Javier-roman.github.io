@@ -66,14 +66,14 @@
       <div class="case-hero__chips"><span class="chip">Desarrollo</span><span class="chip chip--live">Publicado</span></div>
       <h1 class="case-hero__title" style="--len:7" data-scramble>Dental Clinic Manager</h1>
       <p class="case-hero__one">Aplicación web para gestionar los pacientes y el personal de una clínica dental.</p>
-      <dl class="facts"><div><dt>Nombre</dt><dd>Aupy</dd></div><div><dt>Tipo</dt><dd>Encargo real · profesora de mi centro</dd></div><div><dt>Despliegue</dt><dd>Docker Compose</dd></div><div><dt>Estado</dt><dd>Publicado en GitHub</dd></div></dl>
+      <dl class="facts"><div><dt>Nombre</dt><dd>Aupy</dd></div><div><dt>Tipo</dt><dd>Encargo de una profesora de mi centro</dd></div><div><dt>Despliegue</dt><dd>Docker Compose</dd></div><div><dt>Estado</dt><dd>Publicado en GitHub</dd></div></dl>
       <div class="case-hero__actions"><a class="btn" href="https://github.com/Javier-roman/aupy-dental-clinic" target="_blank" rel="noopener">Ver el repositorio <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
     </header>
     <div class="container case-visual reveal">
       <div class="case-visual__panel vis-code">
-      <div class="codeblock" tabindex="0" role="region" aria-label="Código: docker-compose.yml"><div class="codeblock__bar"><span class="codeblock__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>docker-compose.yml</span></div><pre><code><span class="ln"><span class="tok-k">app</span>:</span><span class="ln">  <span class="tok-k">build</span>: ./backend</span><span class="ln">  <span class="tok-k">ports</span>:</span><span class="ln">    - <span class="tok-s">&quot;3000:3000&quot;</span></span><span class="ln">  <span class="tok-k">environment</span>:</span><span class="ln">    - MYSQL_HOST=mysql-aupy</span><span class="ln">    - MYSQL_PASSWORD=<span class="tok-n">${MYSQL_ROOT_PASSWORD}</span></span><span class="ln">  <span class="tok-k">depends_on</span>:</span><span class="ln">    <span class="tok-k">mysql</span>:</span><span class="ln">      <span class="tok-k">condition</span>: service_healthy</span></code></pre></div>
+      <div class="codeblock" tabindex="0" role="region" aria-label="Código: docker-compose.yml"><div class="codeblock__bar"><span class="codeblock__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>docker-compose.yml</span></div><pre><code><span class="ln"><span class="tok-k">mysql</span>:</span><span class="ln">  <span class="tok-k">image</span>: mysql:8.0</span><span class="ln">  <span class="tok-k">healthcheck</span>:</span><span class="ln">    <span class="tok-k">test</span>: [<span class="tok-s">&quot;CMD&quot;</span>, <span class="tok-s">&quot;mysqladmin&quot;</span>, <span class="tok-s">&quot;ping&quot;</span>, <span class="tok-s">&quot;-h&quot;</span>, <span class="tok-s">&quot;localhost&quot;</span>]</span><span class="ln">    <span class="tok-k">interval</span>: 5s</span><span class="ln">    <span class="tok-k">retries</span>: 10</span><span class="ln"> </span><span class="ln"><span class="tok-k">app</span>:</span><span class="ln">  <span class="tok-k">build</span>: ./backend</span><span class="ln">  <span class="tok-k">depends_on</span>:</span><span class="ln">    <span class="tok-k">mysql</span>:</span><span class="ln">      <span class="tok-k">condition</span>: service_healthy</span></code></pre></div>
       
-    </div><p class="case-visual__cap">docker-compose.yml: el servicio de la app (extracto real)</p>
+    </div><p class="case-visual__cap">docker-compose.yml: la app espera a que MySQL esté listo (extracto)</p>
     </div>
     <div class="container case-body">
       <section class="case-sec reveal" aria-labelledby="reto">
@@ -90,12 +90,12 @@
       </section>
       <section class="case-sec reveal" aria-labelledby="resultado">
         <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">04</p><h2 class="case-sec__title" id="resultado">Resultado y lo que aprendí</h2></div></div>
-        <div><div class="prose"><p>Se despliega entera con un solo comando (<code>docker compose up -d</code>): la app queda en el puerto 3000, phpMyAdmin en el 8080 y n8n en el 5678.</p></div><div class="case-learned"><h3>Lo que aprendí</h3><p>La seguridad empieza en el propio repositorio: nada de credenciales en el código.</p></div></div>
+        <div><div class="prose"><p>Se despliega entera con un solo comando (<code>docker compose up -d</code>).</p></div><div class="case-learned"><h3>Lo que aprendí</h3><p>La seguridad empieza en el propio repositorio: nada de credenciales en el código. El siguiente paso es que la app use un usuario de MySQL con los permisos justos, en lugar de root.</p></div></div>
       </section>
     </div>
     <nav class="container pager" aria-label="Otros trabajos">
       <a href="lava-market.html"><span>← Anterior</span><b>LAVA_MARKET</b></a>
-      <a href="hacking-labs-vol-1.html"><span>Siguiente →</span><b>Hacking Labs Vol. 1</b></a>
+      <a href="hacking-labs-vol-1.html"><span>Siguiente →</span><b>Hacking Labs Vol. 1</b></a>
     </nav>
   </article>
 </main>

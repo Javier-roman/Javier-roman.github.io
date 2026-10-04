@@ -47,8 +47,8 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
 .cv-name {
   font-size: 23pt;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  word-spacing: 0.12em;
+  letter-spacing: 0.07em;   /* más abierto parte el nombre en letras sueltas al extraer el texto (ATS) */
+  word-spacing: 0.16em;
   text-transform: uppercase;
   line-height: 1.05;
   margin-right: -0.1em; /* compensa el tracking del último carácter */
@@ -75,7 +75,7 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
 .cv-contact a, .cv-contact span { color: var(--ink); }
 
 /* ---------- Secciones ---------- */
-.cv-sec { margin-top: 8pt; }
+.cv-sec { margin-top: 7.0pt; }
 .cv-h {
   margin-bottom: 4pt;
   padding: 2pt 0 1.8pt;
@@ -102,7 +102,7 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
 .cv-portfolio > div { text-align: center; text-wrap: balance; }
 .cv-urls { margin-top: 3pt; font-weight: 700; }
 .cv-urls a { border-bottom: 0.6pt solid #b5b5b5; }
-.cv-qr { width: 14mm; height: 14mm; flex: none; }
+.cv-qr { width: 12.5mm; height: 12.5mm; flex: none; }
 
 /* ---------- Entradas ---------- */
 .cv-entry { margin-top: 4pt; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10pt; }
@@ -132,8 +132,9 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
 .cv-entry__detail { font-style: italic; font-size: 10pt; color: var(--ink-2); }
 .cv-entry__place { flex: none; font-size: 9.2pt; color: var(--ink-3); }
 .cv-bullets { margin-top: 1.5pt; padding-left: 26pt; list-style: none; }
-.cv-bullets li { position: relative; font-size: 9.8pt; line-height: 1.24; margin-top: 0.4pt; }
-.cv-bullets li::before { content: ""; position: absolute; left: -9pt; top: 0.58em; width: 3pt; height: 3pt; border-radius: 50%; background: #333; }
+/* viñetas sin posicionar: el texto del PDF sale en orden (los ATS leen por orden de dibujo) */
+.cv-bullets li { font-size: 9.8pt; line-height: 1.24; margin-top: 0.4pt; text-indent: -9pt; }
+.cv-bullets li::before { content: "•"; display: inline-block; width: 9pt; text-indent: 0; color: #333; }
 .cv-entry__link { padding-left: 26pt; margin-top: 0.5pt; font-size: 9.2pt; color: var(--ink-2); }
 .cv-entry__link a { border-bottom: 0.6pt solid #b5b5b5; }
 .cv-entry__link::before { content: "Ver: "; font-style: italic; }

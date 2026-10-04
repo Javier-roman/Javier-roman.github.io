@@ -499,7 +499,7 @@ function buildIndex() {
           <div>
           ${textBlock}
           </div>
-          ${photo({ prefix, src: 'photo-face-600', w: 600, h: 800, alt: C.about.photoAlt, cls: '', caption: 'Badalona' })}
+          ${photo({ prefix, src: 'photo-face-600', w: 600, h: 800, alt: C.about.photoAlt, cls: '' })}
         </div>
       </li>`;
     }
@@ -547,7 +547,7 @@ function buildIndex() {
         <div class="about__block reveal">
           <h3>${esc(A.outsideTitle)}</h3>
           ${typeof A.outside[0] === 'object' ? `<dl class="outside-list">${A.outside.map((o) => `<div><dt>${esc(o.k)}</dt><dd>${esc(o.v)}</dd></div>`).join('')}</dl>` : tags(A.outside)}
-          <p class="about__outsideText">${esc(A.outsideText)}</p>
+          ${A.outsideText ? `<p class="about__outsideText">${esc(A.outsideText)}</p>` : ''}
         </div>
         <div class="about__block reveal">
           <h3>${esc(A.langTitle)}</h3>
@@ -637,8 +637,11 @@ function buildCases() {
   const prefix = '../';
   fs.mkdirSync(path.join(V2, 'trabajos'), { recursive: true });
   items.forEach((it, i) => {
-    const prev = items[(i - 1 + items.length) % items.length];
-    const next = items[(i + 1) % items.length];
+    // el paginador recorre los proyectos reales (las ideas no entran en la secuencia)
+    const real = items.filter((x) => x.statusKind !== 'idea');
+    const k = real.indexOf(it);
+    const prev = k >= 0 ? real[(k - 1 + real.length) % real.length] : real[real.length - 1];
+    const next = k >= 0 ? real[(k + 1) % real.length] : real[0];
     const longest = Math.max(...it.name.split(/\s+/).map((w) => w.length));
     const sec = (n, title, body, id) => `<section class="case-sec reveal" aria-labelledby="${id}">
         <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">${n}</p><h2 class="case-sec__title" id="${id}">${esc(title)}</h2></div></div>
@@ -748,11 +751,11 @@ function buildCV() {
     <p class="cv-title">${esc(CV.headline)}</p>
     <p class="cv-subline">${esc(CV.subline)}</p>
     <p class="cv-links">
-      <a href="${P.portfolioUrl}"><span>Portfolio:</span> ${esc(P.portfolio)}</a>
+      <a href="${P.portfolioUrl}">${esc(P.portfolio)}</a>
       <span class="sep" aria-hidden="true">·</span>
-      <a href="${P.githubUrl}"><span>GitHub:</span> ${esc(P.github)}</a>
+      <a href="${P.githubUrl}">${esc(P.github)}</a>
       <span class="sep" aria-hidden="true">·</span>
-      <a href="${P.linkedinUrl}"><span>LinkedIn:</span> ${esc(P.linkedin)}</a>
+      <a href="${P.linkedinUrl}">linkedin.com/${esc(P.linkedin)}</a>
     </p>
     <div class="cv-contact">
       <a href="${P.phoneHref}">${esc(P.phoneIntl)}</a>
@@ -764,7 +767,6 @@ function buildCV() {
   ${sec(CV.sections.portfolio, `<div class="cv-portfolio">
       <div>
         <p>${md(CV.portfolio)}</p>
-        <p class="cv-urls"><a href="${P.portfolioUrl}">${esc(P.portfolio)}</a><span class="sep" aria-hidden="true">·</span><a href="${P.githubUrl}">${esc(P.github)}</a></p>
       </div>
       <img class="cv-qr" src="qr-portfolio.svg" alt="Código QR que enlaza a ${esc(P.portfolio)}" width="64" height="64">
     </div>`, 'cv-sec--framed')}

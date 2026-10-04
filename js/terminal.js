@@ -14,13 +14,17 @@ const COLORS = {
 };
 
 export class TerminalScreen {
-  constructor({ prompt = '~$', script = [], width = 1024, height = 640, title = 'terminal' } = {}) {
+  // scale: resolución extra del lienzo (se dibuja en coordenadas de 1024×640 y se ve nítido de cerca)
+  constructor({ prompt = '~$', script = [], width = 1024, height = 640, title = 'terminal', scale = 1.5 } = {}) {
     this.prompt = prompt;
     this.script = script;
     this.title = title;
     this.canvas = document.createElement('canvas');
-    this.canvas.width = width;
-    this.canvas.height = height;
+    this.W = width;
+    this.H = height;
+    this.k = scale;
+    this.canvas.width = Math.round(width * scale);
+    this.canvas.height = Math.round(height * scale);
     this.ctx = this.canvas.getContext('2d');
     this.font = 26;
     this.lineH = 38;
@@ -135,8 +139,9 @@ export class TerminalScreen {
   }
 
   draw() {
-    const { ctx, canvas } = this;
-    const W = canvas.width, H = canvas.height;
+    const { ctx } = this;
+    const W = this.W, H = this.H;
+    ctx.setTransform(this.k, 0, 0, this.k, 0, 0);
     // fondo
     const g = ctx.createLinearGradient(0, 0, 0, H);
     g.addColorStop(0, COLORS.bgTop);

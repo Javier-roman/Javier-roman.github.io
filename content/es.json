@@ -24,7 +24,7 @@
     "availabilityArea": "Zona Barcelona y remoto",
     "github": "github.com/Javier-roman",
     "githubUrl": "https://github.com/Javier-roman",
-    "linkedin": "in/javier-roman-heider",
+    "linkedin": "in/javier-roman-heider-368475400",
     "linkedinUrl": "https://www.linkedin.com/in/javier-roman-heider-368475400/",
     "portfolio": "javier-roman.github.io",
     "portfolioUrl": "https://javier-roman.github.io/",
@@ -66,7 +66,7 @@
     "repo": "Ver el repositorio",
     "repoMissing": "Aún sin repositorio",
     "caseLink": "Ver caso de estudio",
-    "featured": "Proyecto estrella",
+    "featured": "Proyecto destacado",
     "toTop": "Volver arriba",
     "sceneAlt": "Escena 3D: un personaje de arcilla con sudadera, gafas y auriculares trabaja en su escritorio frente a un monitor con un terminal encendido, junto a una lámpara de lava, bajo un foco cenital.",
     "notFoundTitle": "Ruta no encontrada",
@@ -92,9 +92,9 @@
         "intro": "Me muevo entre tres áreas:",
         "cards": [
           {
-            "title": "Ofensiva / Red Team",
+            "title": "Seguridad ofensiva",
             "sub": "Pentesting · CTF",
-            "text": "Pienso como el atacante para defender mejor. No espero el fallo: lo busco antes, en laboratorios controlados y retos CTF legales, y lo documento en informes técnicos.",
+            "text": "Pienso como el atacante para defender mejor. No espero el fallo: lo busco antes, en laboratorios y retos CTF legales, y lo documento en informes técnicos.",
             "tagsLabel": "Lo que uso",
             "tags": [
               "Red Team",
@@ -106,7 +106,7 @@
           },
           {
             "title": "Sistemas y redes",
-            "sub": "Linux · Windows Server · Proxmox · Cisco",
+            "sub": "Linux · Windows Server · Cisco",
             "text": "Monto y mantengo la base sobre la que corre todo: servidores Linux y Windows, virtualización, contenedores y redes bien segmentadas.",
             "tagsLabel": "Lo que uso",
             "tags": [
@@ -124,7 +124,7 @@
           {
             "title": "Desarrollo",
             "sub": "Python · PHP · Node.js",
-            "text": "Programo herramientas que se usan de verdad, como un extractor de entropía que funciona con una lámpara de lava o la app de gestión que me encargó una profesora para una clínica dental.",
+            "text": "Programo herramientas con un uso concreto, como un extractor de entropía que funciona con una lámpara de lava o la app de gestión que me encargó una profesora para una clínica dental.",
             "tagsLabel": "Lo que uso",
             "tags": [
               "Python",
@@ -143,7 +143,7 @@
         "kicker": "~$ cat ahora.txt",
         "title": "{AHORA}",
         "lead": "Grado en Ciberseguridad en ENTI-UB.",
-        "text": "Es un título oficial de la Universitat de Barcelona, de cuatro años y 240 ECTS. Empecé en 2026 y, como me convalidaron parte del grado superior, este curso ya hago asignaturas de 1.º y 2.º.",
+        "text": "Es un título oficial de la Universitat de Barcelona, de cuatro años y 240 ECTS. Empecé en 2026 y, como me convalidaron parte del grado superior, este curso ya hago asignaturas de 1.º y 2.º.",
         "stats": [
           {
             "value": "2026/27",
@@ -154,8 +154,8 @@
             "label": "A la vez"
           },
           {
-            "value": "240",
-            "label": "ECTS en total"
+            "value": "7",
+            "label": "Asignaturas este curso"
           }
         ],
         "learningLabel": "Este curso",
@@ -180,7 +180,7 @@
   "work": {
     "kicker": "// trabajos",
     "title": "MIS {TRABAJOS}",
-    "intro": "Proyectos reales, dentro y fuera del aula. En cada caso de estudio cuento qué problema había y cómo lo resolví.",
+    "intro": "Proyectos dentro y fuera del aula. En cada caso de estudio cuento qué problema había y cómo lo resolví.",
     "filtersLabel": "Filtrar trabajos por categoría",
     "filters": [
       {
@@ -220,7 +220,7 @@
         "category": "desarrollo",
         "status": "Publicado",
         "statusKind": "live",
-        "oneLiner": "Entropía criptográfica a partir del movimiento caótico de una lámpara de lava.",
+        "oneLiner": "Una fuente experimental de entropía física: el movimiento caótico de una lámpara de lava.",
         "featuredText": "La idea es la misma que usa Cloudflare: convertir el caos de una lámpara de lava en entropía. La mía funciona con una webcam y OpenCV, y tiene una regla: si la entropía no llega a 6,5 bits por byte, no se escribe nada.",
         "tags": [
           "Python",
@@ -249,11 +249,11 @@
         ],
         "challenge": [
           "Un ordenador es determinista, así que generar aleatoriedad de verdad es más difícil de lo que parece. Cloudflare lo resuelve en producción grabando lámparas de lava y convirtiendo su caos en entropía.",
-          "Quise montar mi propia versión de principio a fin, con una webcam corriente y un script que convirtiera ese movimiento en bytes útiles para criptografía."
+          "Quise montar mi propia versión de principio a fin, con una webcam corriente y un script que convirtiera ese movimiento en bytes aleatorios."
         ],
         "approach": [
-          "Un script en Python con OpenCV captura **150 frames** de una webcam que apunta a la lámpara. Convierte cada frame a escala de grises, lo compara con el anterior y se queda solo con los píxeles que se mueven de verdad (umbral de 10 para filtrar el ruido). Esas diferencias son impredecibles: dependen del caos del fluido.",
-          "Antes de escribir nada, mide la calidad. Si la entropía de Shannon no llega a **6,5 bits/byte** (por ejemplo, porque la lámpara está fría), el lote se descarta. Si pasa, se escribe de forma atómica (`.tmp` → rename) junto a un fichero `.meta` con los frames y los bytes del lote.",
+          "Un script en Python con OpenCV captura **150 fotogramas** de una webcam que apunta a la lámpara. Pasa cada fotograma a escala de grises, lo compara con el anterior y se queda solo con los píxeles que cambian (umbral de 10 para filtrar el ruido). Esas diferencias son impredecibles: dependen del caos del fluido.",
+          "Antes de escribir nada, mide la calidad. Si la entropía de Shannon no llega a **6,5 bits/byte** (por ejemplo, porque la lámpara está fría), el lote se descarta. Si pasa, se escribe de forma atómica (`.tmp` → rename) junto a un fichero `.meta` con los fotogramas y los bytes del lote. El umbral es un filtro de calidad, no una garantía: por eso LAVA_MARKET no usa los lotes tal cual, sino que los mezcla con el CSPRNG del sistema mediante HMAC-SHA256.",
           "Corre en una máquina virtual de mi servidor Proxmox. Puede listar cámaras, probar un único lote o trabajar en continuo (un lote cada 5 minutos), y trae un script que usa el CSPRNG del sistema para probarlo todo sin cámara.",
           "Lo integré en [LAVA_MARKET](lava-market.html), mi tienda online en Laravel: un comando `entropy:ingest` valida cada lote y lo guarda como pool, y un servicio lo mezcla con HMAC-SHA256 para generar licencias y tickets. Si la lámpara no está disponible, se usa el CSPRNG del sistema. La integración estuvo en producción durante el proyecto de final de ciclo."
         ],
@@ -263,11 +263,11 @@
           "nodes": [
             {
               "label": "Webcam",
-              "sub": "150 frames por lote"
+              "sub": "150 fotogramas por lote"
             },
             {
               "label": "Escala de grises",
-              "sub": "frame a frame"
+              "sub": "fotograma a fotograma"
             },
             {
               "label": "Diferencia",
@@ -289,7 +289,7 @@
         },
         "visual": {
           "type": "code",
-          "caption": "entropy.py: el núcleo del extractor (código real del repositorio)",
+          "caption": "entropy.py: el núcleo del extractor (código del repositorio)",
           "lang": "python",
           "code": "diff = cv2.absdiff(gray, prev_gray)\n\n# solo píxeles con movimiento real (> 10)\n_, thresh = cv2.threshold(diff, 10, 255, cv2.THRESH_BINARY)\nmotion_pixels = diff[thresh > 0]\n\nif len(motion_pixels) > 0:\n    entropy_buffer.extend(motion_pixels.tobytes())",
           "big": "≥ 6,5",
@@ -333,7 +333,7 @@
           "Un extractor de entropía física que funciona con una webcam corriente y que se niega a escribir si la calidad no es suficiente. Código abierto en GitHub con licencia MIT."
         ],
         "learned": [
-          "Que la aleatoriedad no se da por supuesta: se mide. Y que en seguridad lo que de verdad importa son los detalles aburridos, como escribir de forma atómica o tener siempre un plan B."
+          "Que la aleatoriedad no se da por supuesta: se mide. Y que en seguridad lo que más importa son los detalles aburridos, como escribir de forma atómica o tener siempre un plan B."
         ],
         "related": {
           "label": "LAVA_MARKET, la plataforma que lo usa",
@@ -378,12 +378,12 @@
           }
         ],
         "challenge": [
-          "Lava Entropy RNG necesitaba un sitio donde usarse de verdad. LAVA_MARKET es esa plataforma: una tienda online de productos digitales con licencia, pensada para que licencias y tickets se generen con la entropía de la lámpara."
+          "Lava Entropy RNG necesitaba un sitio donde usarse. LAVA_MARKET es esa plataforma: una tienda online de productos digitales con licencia, pensada para que licencias y tickets se generen con la entropía de la lámpara."
         ],
         "approach": [
           "**Tienda completa.** Catálogo, carrito y pago con Stripe (con webhooks que confirman cada cobro), cuentas de usuario e historial de pedidos. Las facturas en PDF y los emails se generan en cola, y hay panel de administración y soporte por tickets.",
           "**Licencias.** Cada compra genera una clave única con formato `LAVA-XXXX-XXXX-XXXX`, vinculada al pedido y validable desde la plataforma.",
-          "**Seguridad propia.** Escribí mis propios middlewares. Añaden cabeceras de seguridad (contra clickjacking y MIME sniffing, y una Content Security Policy), un honeypot contra bots y saneado de entradas contra XSS. La sesión caduca, y se invalida si el navegador o la red no coinciden con los del login. Un detector de actividad sospechosa limita peticiones y bloquea durante un tiempo las IPs con patrones de inyección. Además, rechaza las contraseñas comunes o que contienen datos personales.",
+          "**Seguridad propia.** Escribí mis propios middlewares. Añaden cabeceras de seguridad (contra clickjacking y MIME sniffing, y una Content Security Policy), un honeypot contra bots y saneado de entradas contra XSS. La sesión caduca y se invalida si el navegador o la red no coinciden con los del login. Un detector de actividad sospechosa limita peticiones y bloquea durante un tiempo las IPs con patrones de inyección. La plataforma también rechaza las contraseñas comunes o que contienen datos personales.",
           "**Entropía física.** El comando `entropy:ingest` lee cada lote de Lava Entropy RNG, valida su calidad y lo guarda como pool; `LavaEntropyService` lo mezcla con el CSPRNG mediante HMAC-SHA256 y, si no hay lámpara, cae a CSPRNG puro."
         ],
         "diagram": {
@@ -456,10 +456,10 @@
           }
         ],
         "result": [
-          "Una tienda online completa, con Stripe en modo de prueba y en real, que estuvo en producción con la entropía de la lámpara durante el proyecto de final de ciclo."
+          "Una tienda online completa, preparada para Stripe en modo de prueba y en producción, que estuvo en marcha con la entropía de la lámpara durante el proyecto de final de ciclo."
         ],
         "learned": [
-          "Pensar como el atacante para defender mejor, aplicado a mi propio código: cada middleware responde a un ataque concreto."
+          "A revisar mi propio código con ojos de atacante: cada middleware responde a un ataque concreto."
         ]
       },
       {
@@ -483,7 +483,7 @@
           },
           {
             "k": "Tipo",
-            "v": "Encargo real · profesora de mi centro"
+            "v": "Encargo de una profesora de mi centro"
           },
           {
             "k": "Despliegue",
@@ -508,9 +508,9 @@
         },
         "visual": {
           "type": "code",
-          "caption": "docker-compose.yml: el servicio de la app (extracto real)",
+          "caption": "docker-compose.yml: la app espera a que MySQL esté listo (extracto)",
           "lang": "yaml",
-          "code": "app:\n  build: ./backend\n  ports:\n    - \"3000:3000\"\n  environment:\n    - MYSQL_HOST=mysql-aupy\n    - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}\n  depends_on:\n    mysql:\n      condition: service_healthy"
+          "code": "mysql:\n  image: mysql:8.0\n  healthcheck:\n    test: [\"CMD\", \"mysqladmin\", \"ping\", \"-h\", \"localhost\"]\n    interval: 5s\n    retries: 10\n\napp:\n  build: ./backend\n  depends_on:\n    mysql:\n      condition: service_healthy"
         },
         "stack": [
           {
@@ -551,15 +551,15 @@
           }
         ],
         "result": [
-          "Se despliega entera con un solo comando (`docker compose up -d`): la app queda en el puerto 3000, phpMyAdmin en el 8080 y n8n en el 5678."
+          "Se despliega entera con un solo comando (`docker compose up -d`)."
         ],
         "learned": [
-          "La seguridad empieza en el propio repositorio: nada de credenciales en el código."
+          "La seguridad empieza en el propio repositorio: nada de credenciales en el código. El siguiente paso es que la app use un usuario de MySQL con los permisos justos, en lugar de root."
         ]
       },
       {
         "slug": "hacking-labs-vol-1",
-        "name": "Hacking Labs Vol. 1",
+        "name": "Hacking Labs Vol. 1",
         "category": "ofensiva",
         "status": "Publicado",
         "statusKind": "live",
@@ -577,7 +577,7 @@
           },
           {
             "k": "Entorno",
-            "v": "Controlado y legal"
+            "v": "Laboratorios autorizados"
           },
           {
             "k": "Formato",
@@ -589,10 +589,10 @@
           }
         ],
         "challenge": [
-          "Practicar ciberseguridad ofensiva de forma legal y ordenada. Este repositorio reúne informes técnicos de laboratorios de ciberseguridad y retos CTF: cada documento trata un escenario distinto."
+          "Practicar ciberseguridad ofensiva con orden. El repositorio reúne informes técnicos de laboratorios y retos CTF; cada documento trata un escenario distinto."
         ],
         "approach": [
-          "Todo se hace en entornos controlados y legales: máquinas virtuales de laboratorio y plataformas de CTF.",
+          "Todo se hace en entornos autorizados: máquinas virtuales de laboratorio y plataformas de CTF.",
           "Cada informe sigue la estructura de una auditoría: el escenario, la metodología y las recomendaciones para corregir lo encontrado."
         ],
         "diagram": {
@@ -601,7 +601,7 @@
           "nodes": [
             {
               "label": "Escenario",
-              "sub": "laboratorio o CTF legal"
+              "sub": "laboratorio o CTF"
             },
             {
               "label": "Metodología",
@@ -622,8 +622,8 @@
           "big": "VOL. 01",
           "lines": [
             "Informes técnicos",
-            "Laboratorios controlados",
-            "Retos CTF legales"
+            "Laboratorios",
+            "Retos CTF"
           ]
         },
         "stack": [
@@ -644,7 +644,7 @@
           }
         ],
         "result": [
-          "Los informes están publicados en GitHub y documentan mi práctica en entornos legales."
+          "Los informes están publicados en GitHub."
         ],
         "learned": [
           "Aquí cogí método. Aprendí a documentar cada paso como si otra persona tuviera que repetirlo, y a tener paciencia cuando algo no sale a la primera."
@@ -652,7 +652,7 @@
       },
       {
         "slug": "hacking-labs-vol-2",
-        "name": "Hacking Labs Vol. 2",
+        "name": "Hacking Labs Vol. 2",
         "category": "ofensiva",
         "status": "Publicado",
         "statusKind": "live",
@@ -674,7 +674,7 @@
           },
           {
             "k": "Entorno",
-            "v": "Controlado y legal"
+            "v": "Laboratorios autorizados"
           },
           {
             "k": "Estado",
@@ -686,7 +686,7 @@
         ],
         "approach": [
           "Las áreas que cubre van del análisis forense de memoria a la seguridad de redes y las vulnerabilidades web.",
-          "Igual que en el primero: entornos controlados y legales, y cada informe documentado con su metodología y sus recomendaciones de mitigación."
+          "Igual que en el primero: cada informe documenta la metodología y las recomendaciones de mitigación."
         ],
         "diagram": {
           "type": "flow",
@@ -770,7 +770,7 @@
           },
           {
             "k": "Equipo",
-            "v": "Luis Quesada, Adrià Àrque y yo"
+            "v": "Tres personas"
           },
           {
             "k": "Estado",
@@ -782,10 +782,10 @@
           "Más de **120 dispositivos** conectados a la vez, con disponibilidad y seguridad. Lo planteamos como Medusa, nuestra empresa (ficticia) de redes."
         ],
         "approach": [
-          "**Red.** Diseño en Cisco Packet Tracer con OSPF (área 0). Dividimos 192.168.2.0/24 en subredes /27, una por oficina (30 direcciones útiles: 8 en uso y el resto para crecer), con una VLAN por oficina y ACLs para aislarlas entre sí. IPv6 en los enlaces entre routers e IPv4 en las oficinas de la segunda planta, por fiabilidad.",
-          "**Servidores.** ATENEA (principal: DNS, DHCP, LDAP y bases de datos), MNEMOSINE (copias de seguridad) y HESTIA (puesto de administración). ATENEA y MNEMOSINE, unidos con LACP para repartir carga y tener redundancia.",
+          "**Red.** Diseño en Cisco Packet Tracer con OSPF (área 0), una VLAN por oficina y ACLs para aislarlas entre sí. Las oficinas de la segunda planta pasaron de IPv6 a IPv4 porque necesitaban mucha conectividad a internet: partimos de 192.168.2.0/24 y la dividimos en subredes /27, una por oficina (30 direcciones útiles: 8 en uso y el resto para crecer).",
+          "**Servidores.** ATENEA (principal: DNS, DHCP, LDAP y bases de datos), MNEMOSINE (copias de seguridad) y HESTIA (puesto de administración). MNEMOSINE se conecta a ATENEA con dos enlaces agregados (LACP), para repartir carga y tener redundancia.",
           "**Energía.** Un SAI por grupo de trabajo (APC Smart-UPS 1500 VA para los servidores) y un grupo electrógeno de 66 kVA con transferencia automática. Estimamos unos 40,4 kW de carga para todo el edificio.",
-          "**Web.** Ampliamos la web de la empresa: consultas preparadas en todas las queries, contraseñas con hash, recuperación de contraseña por email con tokens de una hora (PHPMailer) y un ranking de productos con Chart.js, triggers SQL y locución con la Web Speech API.",
+          "**Web.** Ampliamos la web de la empresa: todas las consultas usan sentencias preparadas, las contraseñas se guardan con hash, la recuperación de contraseña va por email con tokens de una hora (PHPMailer) y hay un ranking de productos con Chart.js, triggers SQL y locución con la Web Speech API.",
           "**Mi parte.** Me centré sobre todo en el diseño y despliegue de la red, la configuración de los servidores y la gestión de usuarios y permisos en LDAP."
         ],
         "diagram": {
@@ -921,7 +921,7 @@
         },
         "visual": {
           "type": "code",
-          "caption": "Dockerfile: el contenedor completo (código real del repositorio)",
+          "caption": "Dockerfile: el contenedor completo (código del repositorio)",
           "lang": "docker",
           "code": "FROM nginx:latest\n\n# todo el frontend al directorio web de Nginx\nCOPY . /usr/share/nginx/html\n\nEXPOSE 80\nCMD [\"nginx\", \"-g\", \"daemon off;\"]"
         },
@@ -973,7 +973,7 @@
         "facts": [
           {
             "k": "Tipo",
-            "v": "Idea · próximo proyecto"
+            "v": "Próximo proyecto"
           },
           {
             "k": "Plataforma",
@@ -985,7 +985,7 @@
           },
           {
             "k": "Estado",
-            "v": "Sin código todavía"
+            "v": "Idea"
           }
         ],
         "challenge": [
@@ -1053,10 +1053,10 @@
           }
         ],
         "result": [
-          "Es una idea: todavía no hay código. La enseño porque es lo siguiente que quiero construir."
+          "Todavía no hay código. La enseño porque es lo siguiente que quiero construir."
         ],
         "learned": [
-          "Tengo un lado de creador: me gusta tener un proyecto propio entre manos. CyberOS es el siguiente."
+          "Me gusta tener un proyecto propio entre manos, y CyberOS es el siguiente."
         ],
         "sections": {
           "challenge": "La idea",
@@ -1077,8 +1077,8 @@
         "n": "01",
         "mark": "Badalona · Premià",
         "title": "De dónde vengo",
-        "big": "Vivo entre Badalona y Premià de Mar. Familiar y cercano.",
-        "text": "Me implico de verdad en lo que hago, no porque me lo exijan, sino porque así soy. En casa no soy el primero de la rama técnica (mi padre es ingeniero eléctrico), pero a la ciberseguridad llegué por mi cuenta.",
+        "big": "Vivo entre Badalona y Premià de Mar.",
+        "text": "Trabajo igual de a gusto en equipo que solo. En casa no soy el primero de la rama técnica (mi padre es ingeniero eléctrico), pero a la ciberseguridad llegué por mi cuenta.",
         "photo": true
       },
       {
@@ -1086,30 +1086,30 @@
         "mark": "Tras el bachillerato",
         "title": "Por qué ciberseguridad",
         "big": "Después del bachillerato, estaba perdido.",
-        "text": "Los ordenadores siempre me habían llamado la atención, y la ciberseguridad más que nada. Al principio, lo reconozco, por los típicos estereotipos. Me gustaba investigar, cotillear y descubrir cómo funcionan las cosas. No la elegí por descarte: buscaba algo ambicioso, que cambiara siempre y no se volviera rutina."
+        "text": "Los ordenadores siempre me habían llamado la atención, y la ciberseguridad más que nada (al principio, lo reconozco, por los típicos estereotipos). Me gustaba investigar, trastear y descubrir cómo funcionan las cosas. Buscaba algo ambicioso, que cambiara siempre y no se volviera rutina."
       },
       {
         "n": "03",
         "mark": "Verano 2024",
-        "title": "Estudiar y trabajar a la vez",
-        "big": "Nadie me lo pidió. Lo hice igual.",
-        "text": "El verano de 2024 trabajé en Mecalux (Cornellà), en un entorno industrial exigente, para ayudar a mi familia y pagarme los estudios. No fue un sacrificio: fue una decisión. Me enseñó a gestionar la presión, a priorizar y a no poner excusas cuando las cosas se complican."
+        "title": "Mi primer trabajo",
+        "big": "Un verano en Mecalux.",
+        "text": "En el verano de 2024 trabajé en Mecalux (Cornellà), en un entorno industrial exigente, para ayudar en casa y pagarme los estudios. Aprendí a trabajar con presión y a organizarme."
       },
       {
         "n": "04",
         "mark": "CyberHack · 2025",
         "title": "El momento en que todo encajó",
         "big": "Concentración máxima, adrenalina y disfrute al mismo tiempo.",
-        "text": "Fue en 2025, en la CyberHack, una hackatón organizada por ENTI. Yo estaba en segundo del grado superior. Era una carrera contra el reloj: competir, pensar rápido y darlo todo. Esa sensación es la que me hace seguir aprendiendo fuera del horario."
+        "text": "Fue en 2025, en la CyberHack, una hackatón organizada por ENTI, cuando estaba en segundo del grado superior. Era una carrera contra el reloj, y esa sensación es la que me hace seguir aprendiendo fuera del horario."
       },
       {
         "n": "05",
-        "mark": "2024 → 2026",
+        "mark": "2026",
         "title": "El camino",
         "big": "Del grado superior a la universidad.",
-        "text": "Hice el grado superior de ASIX (Administración de Sistemas Informáticos en Red) en IFP Barcelona, de 2024 a 2026, con la especialización en ciberseguridad, y las prácticas como técnico IT en Matrix DV. En 2026 empecé el Grado en Ciberseguridad en ENTI-UB. Me convalidaron asignaturas como Redes I, Bases de Datos o Introducción a la Ciberseguridad, así que este curso ya combino 1.º y 2.º.",
+        "text": "En 2026 terminé el CFGS de ASIX en IFP Barcelona, con la especialización en ciberseguridad y las prácticas como técnico IT en Matrix DV, y empecé el Grado en Ciberseguridad en ENTI-UB. Me convalidaron asignaturas como Redes I, Bases de Datos o Introducción a la Ciberseguridad, así que este curso ya combino 1.º y 2.º.",
         "path": [
-          "ASIX · IFP Barcelona",
+          "CFGS ASIX · IFP Barcelona",
           "Prácticas · Matrix DV",
           "Grado · ENTI-UB"
         ]
@@ -1118,8 +1118,8 @@
         "n": "06",
         "mark": "Ahora",
         "title": "Lo que quiero aportar",
-        "big": "Tecnología al servicio de las personas. No al revés.",
-        "text": "Quiero construir herramientas reales que hagan el día a día de la gente más fácil y más seguro. Y tengo un lado de creador: en cinco años me veo con la carrera acabada, en una empresa con un reto que me motive y con algún proyecto propio en marcha.",
+        "big": "Que la tecnología le sirva a la gente.",
+        "text": "Quiero construir herramientas que hagan el día a día de la gente más fácil y más seguro. Tengo un lado de creador: en cinco años me veo con la carrera acabada, en una empresa con un reto que me motive y con algún proyecto propio en marcha.",
         "links": [
           {
             "label": "Lava Entropy RNG",
@@ -1139,7 +1139,7 @@
   },
   "about": {
     "kicker": "// sobre mí",
-    "title": "MÁS ALLÁ DEL|{TÉCNICO}",
+    "title": "MÁS ALLÁ DE|{LO TÉCNICO}",
     "photoAlt": "Retrato de Javier Roman Heider con traje oscuro, camisa blanca y gafas, sobre fondo negro.",
     "wordsIntro": "Si un compañero tuviera que describirme en tres palabras:",
     "words": [
@@ -1150,19 +1150,19 @@
     "howTitle": "Cómo trabajo",
     "how": [
       {
-        "k": "Me implico de verdad",
+        "k": "Me implico",
         "v": "No hago las cosas a medias."
       },
       {
         "k": "Aprendo fuera del horario",
-        "v": "CTFs, laboratorios y proyectos propios."
+        "v": "Retos CTF, laboratorios y proyectos propios."
       },
       {
-        "k": "Pienso como el atacante",
-        "v": "Para defender mejor."
+        "k": "Soy discreto",
+        "v": "La ciberseguridad va de confianza."
       },
       {
-        "k": "Comunico claro",
+        "k": "Me explico con claridad",
         "v": "Con técnicos y con no técnicos."
       }
     ],
@@ -1174,7 +1174,7 @@
       },
       {
         "k": "Gimnasio",
-        "v": "Porque cuidarse es importante."
+        "v": "Para cuidarme."
       },
       {
         "k": "Taekwondo",
@@ -1185,7 +1185,7 @@
         "v": "Verlo también es desconectar."
       }
     ],
-    "outsideText": "Desconectar bien es parte de conectar bien cuando toca.",
+    "outsideText": "",
     "langTitle": "Idiomas",
     "languages": [
       {
@@ -1217,19 +1217,19 @@
         "when": "Desde 2026",
         "title": "Grado en Ciberseguridad",
         "org": "ENTI-UB · centro adscrito a la Universitat de Barcelona",
-        "text": "Título oficial de la UB, de cuatro años (240 ECTS). Este curso hago asignaturas de 1.º y 2.º gracias a las convalidaciones del ciclo.",
+        "text": "Título oficial de la UB, de cuatro años (240 ECTS). Este curso hago asignaturas de 1.º y 2.º gracias a las convalidaciones del ciclo.",
         "current": true
       },
       {
         "when": "2024–2026",
-        "title": "Grado superior en ASIX/ASIR",
+        "title": "CFGS en ASIX/ASIR",
         "org": "IFP Barcelona",
         "text": "Administración de Sistemas Informáticos en Red, con especialización en ciberseguridad (Red Team y pentesting). Prácticas FCT como técnico IT en Matrix DV."
       },
       {
         "when": "2021–2024",
         "title": "Bachillerato Tecnológico",
-        "org": "Instituto Mediterrània · El Masnou",
+        "org": "Institut Mediterrània · El Masnou",
         "text": ""
       }
     ],
@@ -1240,13 +1240,13 @@
         "title": "Técnico IT (prácticas FCT)",
         "org": "Matrix DV · Barcelona",
         "points": [
-          "Soporte y mantenimiento de sistemas en un entorno empresarial real.",
+          "Soporte y mantenimiento de los sistemas de la empresa.",
           "Configuración e implantación de software de automatización de facturación.",
           "Gestión de usuarios y permisos, y resolución de incidencias IT."
         ]
       },
       {
-        "when": "Jul.–sep. 2024",
+        "when": "jul.–sept. 2024",
         "title": "Técnico peón",
         "org": "Mecalux · Cornellà de Llobregat",
         "points": [
@@ -1259,7 +1259,7 @@
     "kicker": "// contacto",
     "title": "{HABLEMOS}",
     "availability": "Ahora mismo estoy abierto a todo: trabajo, prácticas o proyectos, en zona Barcelona o en remoto.",
-    "text": "Busco un equipo donde aportar desde el primer día y crecer con gente que se toma en serio lo que hace. Si encaja con lo que tienes, escríbeme.",
+    "text": "Busco un equipo donde crecer con gente que se toma en serio lo que hace. Si encaja con lo que tienes, escríbeme.",
     "items": [
       {
         "k": "Email",
@@ -1279,7 +1279,7 @@
       },
       {
         "k": "LinkedIn",
-        "v": "javier-roman-heider",
+        "v": "in/javier-roman-heider-368475400",
         "href": "https://www.linkedin.com/in/javier-roman-heider-368475400/",
         "external": true
       }
@@ -1318,16 +1318,15 @@
         ]
       },
       {
-        "cmd": "cd proyectos/aupy-dental-clinic",
+        "cmd": "cd proyectos/lava-market-laravel",
         "out": []
       },
       {
-        "cmd": "git log --oneline -3",
+        "cmd": "git log --oneline -2",
         "out": [
-          "ebc5fa6 Security: replace hardcoded",
-          "        credentials with env vars",
-          "f39858d Agregar script de base de datos",
-          "ed6d6f4 Actualizar README"
+          "d1ffd57 Add professional README",
+          "830f1f0 LAVA_MARKET — full schema",
+          "        refactor + entropy system"
         ]
       },
       {
@@ -1341,7 +1340,7 @@
   },
   "cv": {
     "fileTitle": "Javier Roman Heider — CV",
-    "headline": "Técnico en sistemas, redes y ciberseguridad · Red Team y pentesting",
+    "headline": "Técnico superior en ASIX, especializado en ciberseguridad",
     "subline": "Estudiante del Grado en Ciberseguridad en ENTI-UB (Universitat de Barcelona)",
     "sections": {
       "profile": "Perfil",
@@ -1352,22 +1351,22 @@
       "skills": "Competencias técnicas",
       "languages": "Idiomas"
     },
-    "profile": "He trabajado en empresa (Matrix DV), participo en CTFs y tengo proyectos propios como Lava Entropy RNG. Busco un entorno exigente donde aportar desde el primer día.",
+    "profile": "Hice las prácticas del ciclo como técnico IT en Matrix DV, participo en retos CTF y tengo proyectos propios como Lava Entropy RNG. Busco un entorno exigente donde aportar desde el primer día.",
     "softSkills": [
       {
         "k": "Apasionado",
-        "v": "Aprendo por gusto, no por obligación."
+        "v": "Aprendo en mi tiempo libre."
       },
       {
         "k": "Sin excusas",
-        "v": "Estudié y trabajé a la vez."
+        "v": "Me pagué parte de los estudios trabajando."
       },
       {
         "k": "Cercano",
-        "v": "Me implico de verdad en lo que hago."
+        "v": "Me adapto a quien tengo delante."
       }
     ],
-    "portfolio": "En el portfolio explico cada proyecto como un caso de estudio, con el código en GitHub.",
+    "portfolio": "En [javier-roman.github.io](https://javier-roman.github.io/) explico cada proyecto como un caso de estudio, con su código en GitHub.",
     "education": [
       {
         "title": "Grado en Ciberseguridad, ENTI-UB",
@@ -1380,11 +1379,11 @@
         "title": "CFGS en Administración de Sistemas Informáticos en Red (ASIX/ASIR), IFP Barcelona",
         "when": "2024–2026",
         "where": "Barcelona",
-        "detail": "Especialización en ciberseguridad (Red Team y pentesting)",
+        "detail": "Especialización en ciberseguridad (Red Team y pentesting).",
         "points": []
       },
       {
-        "title": "Bachillerato Tecnológico, Instituto Mediterrània (El Masnou)",
+        "title": "Bachillerato Tecnológico, Institut Mediterrània (El Masnou)",
         "when": "2021–2024",
         "where": "",
         "detail": "",
@@ -1397,14 +1396,14 @@
         "when": "2025–2026",
         "where": "Barcelona",
         "points": [
-          "Di soporte y mantenimiento a sistemas en un entorno empresarial real.",
+          "Di soporte y mantenimiento a los sistemas de la empresa.",
           "Configuré e implanté software de automatización de facturación.",
           "Gestioné usuarios y permisos, y resolví incidencias IT."
         ]
       },
       {
         "title": "Técnico peón, Mecalux",
-        "when": "Jul.–sep. 2024",
+        "when": "jul.–sept. 2024",
         "where": "Cornellà de Llobregat",
         "points": [
           "Trabajé en un entorno industrial exigente mientras financiaba mis estudios."
@@ -1426,7 +1425,7 @@
       {
         "title": "Dental Clinic Manager (Aupy)",
         "right": "Node.js · MySQL · Docker",
-        "where": "Encargo real",
+        "where": "Encargo",
         "points": [
           "Desarrollé una app de gestión para una clínica dental, por encargo de una profesora de mi centro."
         ],
@@ -1434,11 +1433,12 @@
         "href": "https://javier-roman.github.io/trabajos/dental-clinic-manager.html"
       },
       {
-        "title": "Hacking Labs Vol. 1 y 2",
+        "title": "Hacking Labs Vol. 1 y 2",
         "right": "CTF · Laboratorios",
         "where": "GitHub",
         "points": [
-          "Documenté laboratorios y retos CTF legales en informes con metodología y mitigaciones."
+          "Documenté laboratorios y retos CTF en informes con metodología y mitigaciones.",
+          "Participé en la CyberHack 2025, la hackatón de ciberseguridad de ENTI."
         ],
         "link": "javier-roman.github.io/trabajos/hacking-labs-vol-1",
         "href": "https://javier-roman.github.io/trabajos/hacking-labs-vol-1.html"
