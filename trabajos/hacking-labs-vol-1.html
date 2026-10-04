@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hacking Labs Vol. 1 — Javier Roman Heider</title>
+<meta name="description" content="Informes técnicos de laboratorios de ciberseguridad y retos CTF. Caso de estudio de Javier Roman Heider.">
+<link rel="canonical" href="https://javier-roman.github.io/trabajos/hacking-labs-vol-1.html">
+<meta name="theme-color" content="#08080A">
+<meta name="color-scheme" content="dark">
+<meta name="author" content="Javier Roman Heider">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Javier Roman Heider">
+<meta property="og:title" content="Hacking Labs Vol. 1 — Javier Roman Heider">
+<meta property="og:description" content="Informes técnicos de laboratorios de ciberseguridad y retos CTF. Caso de estudio de Javier Roman Heider.">
+<meta property="og:url" content="https://javier-roman.github.io/trabajos/hacking-labs-vol-1.html">
+<meta property="og:image" content="https://javier-roman.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Escena 3D de un puesto de trabajo con un terminal encendido, sobre fondo negro.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hacking Labs Vol. 1 — Javier Roman Heider">
+<meta name="twitter:description" content="Informes técnicos de laboratorios de ciberseguridad y retos CTF. Caso de estudio de Javier Roman Heider.">
+<meta name="twitter:image" content="https://javier-roman.github.io/assets/og.jpg">
+<link rel="icon" href="../assets/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preload" href="../fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/main.css">
+<script>(function(d,w){var h=d.documentElement,m=function(q){return w.matchMedia(q).matches};h.classList.remove('no-js');h.classList.add('js');var r=m('(prefers-reduced-motion: reduce)');if(!r)h.classList.add('motion');if(!r&&m('(min-width: 1000px) and (min-height: 600px)')&&d.querySelector&&false)h.classList.add('pin');})(document,window);</script>
+<script type="module" src="../js/main.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Javier Roman Heider","url":"https://javier-roman.github.io/","jobTitle":"Técnico en sistemas, redes y ciberseguridad","email":"mailto:javieroman1972@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Badalona","addressRegion":"Barcelona","addressCountry":"ES"},"sameAs":["https://github.com/Javier-roman","https://www.linkedin.com/in/javier-roman-heider-368475400/"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"ENTI-UB · Universitat de Barcelona"},{"@type":"EducationalOrganization","name":"IFP Barcelona"}],"knowsLanguage":["es","ca","en","de"]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div class="atmos" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../#inicio" aria-label="javier-roman: ir al inicio"><span>javier-roman</span><span class="brand__path">~$</span><span class="brand__caret" aria-hidden="true"></span></a>
+  <nav class="nav" aria-label="Principal"><a href="../#trabajos">Trabajos</a><a href="../#historia">Historia</a><a href="../#sobre-mi">Sobre mí</a><a href="../#contacto">Contacto</a></nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-open="Menú" data-close="Cerrar"><span class="menu-toggle__label">Menú</span><span class="menu-toggle__bars" aria-hidden="true"></span></button>
+</header>
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <nav aria-label="Menú móvil"><a class="mobile-menu__item" href="../#trabajos">Trabajos</a><a class="mobile-menu__item" href="../#historia">Historia</a><a class="mobile-menu__item" href="../#sobre-mi">Sobre mí</a><a class="mobile-menu__item" href="../#contacto">Contacto</a></nav>
+  <div class="mobile-menu__meta">
+    <a href="https://github.com/Javier-roman" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/javier-roman-heider-368475400/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="../cv/Javier_Roman_Heider_CV.pdf" download="Javier_Roman_Heider_CV.pdf">Descargar CV en PDF</a>
+  </div>
+</div>
+<nav class="social-rail" aria-label="Redes">
+  <a href="https://github.com/Javier-roman" target="_blank" rel="noopener" aria-label="GitHub de Javier Roman Heider"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+  <a href="https://www.linkedin.com/in/javier-roman-heider-368475400/" target="_blank" rel="noopener" aria-label="LinkedIn de Javier Roman Heider"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.75H3V9.75Zm6.5 0h3.84v1.6h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.14v6.09h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.86v5.49h-4V9.75Z"/></svg></a>
+</nav>
+<aside aria-label="CV"><a class="cv-link" href="../cv/Javier_Roman_Heider_CV.pdf" download="Javier_Roman_Heider_CV.pdf" aria-label="Descargar CV en PDF">CV <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v13M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg></a></aside>
+<main id="main">
+  <article class="case">
+    <header class="container case-hero">
+      <nav class="crumbs" aria-label="Ruta">
+        <a href="../#trabajos"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg> Todos los trabajos</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Hacking Labs Vol. 1</span>
+      </nav>
+      <div class="case-hero__chips"><span class="chip">Ofensiva</span><span class="chip chip--live">Publicado</span></div>
+      <h1 class="case-hero__title" style="--len:7" data-scramble>Hacking Labs Vol. 1</h1>
+      <p class="case-hero__one">Informes técnicos de laboratorios de ciberseguridad y retos CTF.</p>
+      <dl class="facts"><div><dt>Tipo</dt><dd>Laboratorios y CTF</dd></div><div><dt>Entorno</dt><dd>Controlado y legal</dd></div><div><dt>Formato</dt><dd>Informes técnicos</dd></div><div><dt>Estado</dt><dd>Publicado en GitHub</dd></div></dl>
+      <div class="case-hero__actions"><a class="btn" href="https://github.com/Javier-roman/hacking-labs-vol1" target="_blank" rel="noopener">Ver el repositorio <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" stroke="currentColor" stroke-width="1.5"/></svg></a><a class="link-arrow" href="../#trabajos">Todos los trabajos <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+    </header>
+    <div class="container case-visual reveal">
+      <div class="case-visual__panel vis-type" aria-hidden="true">
+      <p class="vis-type__big">VOL. 01</p>
+      <ul class="vis-type__lines"><li>Informes técnicos</li><li>Laboratorios controlados</li><li>Retos CTF legales</li></ul>
+    </div>
+    </div>
+    <div class="container case-body">
+      <section class="case-sec reveal" aria-labelledby="reto">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">01</p><h2 class="case-sec__title" id="reto">El reto</h2></div></div>
+        <div><div class="prose"><p>Practicar ciberseguridad ofensiva de forma legal y ordenada. Este repositorio reúne informes técnicos de laboratorios de ciberseguridad y retos CTF: cada documento trata un escenario distinto.</p></div></div>
+      </section>
+      <section class="case-sec reveal" aria-labelledby="hice">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">02</p><h2 class="case-sec__title" id="hice">Lo que hice</h2></div></div>
+        <div><div class="prose"><p>Todo se hace en entornos controlados y legales: máquinas virtuales de laboratorio y plataformas de CTF.</p><p>Cada informe sigue la estructura de una auditoría: el escenario, la metodología y las recomendaciones para corregir lo encontrado.</p></div><figure class="diagram"><svg class="d-h" viewBox="0 0 792 90" style="max-width:792px" role="img" aria-labelledby="dg-hacking-labs-vol-1-t dg-hacking-labs-vol-1-d"><title id="dg-hacking-labs-vol-1-t">Cómo se construye cada informe</title><desc id="dg-hacking-labs-vol-1-d">Escenario (laboratorio o CTF legal) → Metodología (documentada) → Recomendaciones (de mitigación) → Informe (publicado)</desc><style>.n{fill:#0d0d10;stroke:rgba(237,237,239,.34);stroke-width:1}.n2{fill:rgba(180,165,255,.1);stroke:#b4a5ff;stroke-width:1}.l{font:700 15px Archivo,system-ui,sans-serif;fill:#ededef}.s{font:500 11.5px 'JetBrains Mono',monospace;fill:#8b8b95}.a{stroke:#b4a5ff;stroke-width:1.4;fill:none}.ah{fill:#b4a5ff}.g{fill:none;stroke:rgba(237,237,239,.22);stroke-dasharray:4 5}.c{font:500 12px 'JetBrains Mono',monospace;fill:#b4a5ff}.e{stroke:rgba(237,237,239,.45);stroke-width:1.2;fill:none}.e2{stroke:#b4a5ff;stroke-width:1.2;fill:none}</style><rect x="0.5" y="2.5" width="167" height="85" class="n"/><text x="84" y="33" class="l" text-anchor="middle">Escenario</text><text x="84" y="55" class="s" text-anchor="middle">laboratorio o CTF</text><text x="84" y="70" class="s" text-anchor="middle">legal</text><path class="a" d="M173 45h26"/><path class="ah" d="M203 41l6 4-6 4z"/><rect x="208.5" y="2.5" width="167" height="85" class="n"/><text x="292" y="40.5" class="l" text-anchor="middle">Metodología</text><text x="292" y="62.5" class="s" text-anchor="middle">documentada</text><path class="a" d="M381 45h26"/><path class="ah" d="M411 41l6 4-6 4z"/><rect x="416.5" y="2.5" width="167" height="85" class="n"/><text x="500" y="40.5" class="l" text-anchor="middle">Recomendaciones</text><text x="500" y="62.5" class="s" text-anchor="middle">de mitigación</text><path class="a" d="M589 45h26"/><path class="ah" d="M619 41l6 4-6 4z"/><rect x="624.5" y="2.5" width="167" height="85" class="n2"/><text x="708" y="40.5" class="l" text-anchor="middle">Informe</text><text x="708" y="62.5" class="s" text-anchor="middle">publicado</text></svg><svg class="d-v" viewBox="0 0 300 350" role="img" aria-labelledby="dg-hacking-labs-vol-1-vt dg-hacking-labs-vol-1-vd"><title id="dg-hacking-labs-vol-1-vt">Cómo se construye cada informe</title><desc id="dg-hacking-labs-vol-1-vd">Escenario (laboratorio o CTF legal) → Metodología (documentada) → Recomendaciones (de mitigación) → Informe (publicado)</desc><style>.n{fill:#0d0d10;stroke:rgba(237,237,239,.34);stroke-width:1}.n2{fill:rgba(180,165,255,.1);stroke:#b4a5ff;stroke-width:1}.l{font:700 15px Archivo,system-ui,sans-serif;fill:#ededef}.s{font:500 11.5px 'JetBrains Mono',monospace;fill:#8b8b95}.a{stroke:#b4a5ff;stroke-width:1.4;fill:none}.ah{fill:#b4a5ff}.g{fill:none;stroke:rgba(237,237,239,.22);stroke-dasharray:4 5}.c{font:500 12px 'JetBrains Mono',monospace;fill:#b4a5ff}.e{stroke:rgba(237,237,239,.45);stroke-width:1.2;fill:none}.e2{stroke:#b4a5ff;stroke-width:1.2;fill:none}</style><rect x="0.5" y="2.5" width="299" height="63" class="n"/><text x="150" y="29" class="l" text-anchor="middle">Escenario</text><text x="150" y="48" class="s" text-anchor="middle">laboratorio o CTF legal</text><path class="a" d="M150 71v16"/><path class="ah" d="M146 91l4 6 4-6z"/><rect x="0.5" y="96.5" width="299" height="63" class="n"/><text x="150" y="123" class="l" text-anchor="middle">Metodología</text><text x="150" y="142" class="s" text-anchor="middle">documentada</text><path class="a" d="M150 165v16"/><path class="ah" d="M146 185l4 6 4-6z"/><rect x="0.5" y="190.5" width="299" height="63" class="n"/><text x="150" y="217" class="l" text-anchor="middle">Recomendaciones</text><text x="150" y="236" class="s" text-anchor="middle">de mitigación</text><path class="a" d="M150 259v16"/><path class="ah" d="M146 279l4 6 4-6z"/><rect x="0.5" y="284.5" width="299" height="63" class="n2"/><text x="150" y="311" class="l" text-anchor="middle">Informe</text><text x="150" y="330" class="s" text-anchor="middle">publicado</text></svg><figcaption>Cómo se construye cada informe</figcaption></figure></div>
+      </section>
+      <section class="case-sec reveal" aria-labelledby="stack">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">03</p><h2 class="case-sec__title" id="stack">Stack y herramientas</h2></div></div>
+        <div><div class="stack-groups"><div><h3>Competencias</h3><ul class="tags"><li class="tag">Metodología de pentesting</li><li class="tag">Documentación técnica</li><li class="tag">Recomendaciones de mitigación</li></ul></div><div><h3>Entorno</h3><ul class="tags"><li class="tag">Máquinas virtuales de laboratorio</li><li class="tag">Plataformas de CTF</li></ul></div></div></div>
+      </section>
+      <section class="case-sec reveal" aria-labelledby="resultado">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">04</p><h2 class="case-sec__title" id="resultado">Resultado y lo que aprendí</h2></div></div>
+        <div><div class="prose"><p>Los informes están publicados en GitHub y documentan mi práctica en entornos legales.</p></div><div class="case-learned"><h3>Lo que aprendí</h3><p>Aquí cogí método. Aprendí a documentar cada paso como si otra persona tuviera que repetirlo, y a tener paciencia cuando algo no sale a la primera.</p></div></div>
+      </section>
+    </div>
+    <nav class="container pager" aria-label="Otros trabajos">
+      <a href="dental-clinic-manager.html"><span>← Anterior</span><b>Dental Clinic Manager</b></a>
+      <a href="hacking-labs-vol-2.html"><span>Siguiente →</span><b>Hacking Labs Vol. 2</b></a>
+    </nav>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="container site-footer__row">
+    <span class="site-footer__exit">javier-roman ~$ exit</span>
+    <span>Construyo, rompo y aprendo.</span>
+    <span>© 2026 Javier Roman Heider</span>
+    <a href="../#inicio">Volver arriba ↑</a>
+  </div>
+</footer>
+<div class="grain" aria-hidden="true"></div>
+</body>
+</html>

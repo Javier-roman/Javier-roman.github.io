@@ -1,0 +1,152 @@
+/* CV — una columna, A4, una página, solo texto y grises. EB Garamond. */
+/* Instancias estáticas: Chrome las incrusta como TrueType (las variables acaban como Type3) */
+@font-face { font-family: "EB Garamond"; src: url("../fonts/cv/eb-garamond-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/cv/eb-garamond-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: block; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/cv/eb-garamond-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: block; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/cv/eb-garamond-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/cv/eb-garamond-italic-400.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: block; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/cv/eb-garamond-italic-600.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: block; }
+
+@page { size: A4; margin: 0; }
+
+:root {
+  --ink: #1c1c1c;
+  --ink-2: #4a4a4a;
+  --ink-3: #6b6b6b;
+  --rule: #2b2b2b;
+  --band: #ececec;
+  --dots: #8a8a8a;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  background: #d9d9d9;
+  color: var(--ink);
+  font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+  font-size: 10pt;
+  line-height: 1.25;
+  font-variant-numeric: lining-nums;
+  font-kerning: normal;
+}
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 24px auto;
+  padding: 9.5mm 14.5mm 8mm;
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Cabecera ---------- */
+.cv-head { text-align: center; }
+.cv-name {
+  font-size: 23pt;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  word-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-right: -0.1em; /* compensa el tracking del último carácter */
+}
+.cv-title { margin-top: 3pt; font-size: 11.2pt; font-weight: 700; }
+.cv-subline { margin-top: 1pt; font-size: 10.5pt; color: var(--ink-2); }
+.cv-links {
+  margin-top: 4.5pt;
+  font-size: 10.4pt;
+  font-weight: 600;
+  color: var(--ink);
+}
+.cv-links a span { font-weight: 700; }
+.cv-links a { border-bottom: 0.6pt solid #b5b5b5; }
+.cv-links .sep, .cv-urls .sep { margin: 0 6pt; color: var(--ink-3); font-weight: 400; }
+.cv-contact {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-top: 4.5pt;
+  padding-bottom: 4pt;
+  border-bottom: 3.2pt double var(--rule);
+  font-size: 10pt;
+  color: var(--ink-2);
+}
+.cv-contact a, .cv-contact span { color: var(--ink); }
+
+/* ---------- Secciones ---------- */
+.cv-sec { margin-top: 8pt; }
+.cv-h {
+  margin-bottom: 4pt;
+  padding: 2pt 0 1.8pt;
+  background: var(--band);
+  text-align: center;
+  font-size: 11pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+.cv-h span { display: inline-block; padding-bottom: 1pt; border-bottom: 1.1pt solid var(--rule); margin-right: -0.08em; }
+.cv-profile { text-align: center; padding: 0 4mm; color: var(--ink); text-wrap: balance; }
+/* Tres rasgos de actitud: zona pequeña, sobria, bajo el perfil */
+.cv-soft { display: grid; grid-template-columns: repeat(3, 1fr); margin: 5pt 0 0; padding: 0; list-style: none; }
+.cv-soft li { padding: 0 2.5mm; text-align: center; line-height: 1.22; }
+.cv-soft li + li { border-left: 0.6pt solid #c2c2c2; }
+.cv-soft b { display: block; font-size: 9.8pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.cv-soft span { display: block; margin-top: 1pt; font-size: 9.4pt; font-style: italic; color: var(--ink-2); }
+
+.cv-sec--framed { border: 0.6pt solid #9d9d9d; padding: 0 0 5pt; }
+.cv-sec--framed .cv-h { margin-bottom: 5pt; }
+.cv-portfolio { display: flex; align-items: center; justify-content: center; gap: 12pt; padding: 0 8mm; }
+.cv-portfolio > div { text-align: center; text-wrap: balance; }
+.cv-urls { margin-top: 3pt; font-weight: 700; }
+.cv-urls a { border-bottom: 0.6pt solid #b5b5b5; }
+.cv-qr { width: 14mm; height: 14mm; flex: none; }
+
+/* ---------- Entradas ---------- */
+.cv-entry { margin-top: 4pt; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10pt; }
+.cv-entry > * { grid-column: 1 / -1; }
+.cv-entry > .cv-float { grid-column: 2; grid-row: 2; justify-self: end; line-height: 1.55; }
+.cv-entry > .cv-float + .cv-bullets { grid-column: 1; grid-row: 2; }
+.cv-entry:first-of-type { margin-top: 0; }
+.cv-entry__row { display: flex; align-items: baseline; }
+.cv-entry__title { font-size: 10.4pt; font-weight: 700; display: inline-flex; align-items: baseline; }
+.cv-entry__title::before {
+  content: "";
+  flex: none;
+  width: 8.2pt; height: 8.2pt;
+  margin-right: 5pt;
+  transform: translateY(0.6pt);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='%23262626'%3E%3Cpath d='M10 .4l3.3 3.3L10 7 6.7 3.7z'/%3E%3Cpath d='M10 13l3.3 3.3L10 19.6l-3.3-3.3z'/%3E%3Cpath d='M.4 10l3.3-3.3L7 10l-3.3 3.3z'/%3E%3Cpath d='M13 10l3.3-3.3 3.3 3.3-3.3 3.3z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+.cv-leader {
+  flex: 1;
+  min-width: 12pt;
+  margin: 0 5pt;
+  border-bottom: 1.15pt dotted var(--dots);
+  transform: translateY(-2.6pt);
+}
+.cv-entry__date { flex: none; font-size: 10pt; color: var(--ink); white-space: nowrap; }
+.cv-entry__sub { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; padding-left: 13.2pt; }
+.cv-entry__detail { font-style: italic; font-size: 10pt; color: var(--ink-2); }
+.cv-entry__place { flex: none; font-size: 9.2pt; color: var(--ink-3); }
+.cv-bullets { margin-top: 1.5pt; padding-left: 26pt; list-style: none; }
+.cv-bullets li { position: relative; font-size: 9.8pt; line-height: 1.24; margin-top: 0.4pt; }
+.cv-bullets li::before { content: ""; position: absolute; left: -9pt; top: 0.58em; width: 3pt; height: 3pt; border-radius: 50%; background: #333; }
+.cv-entry__link { padding-left: 26pt; margin-top: 0.5pt; font-size: 9.2pt; color: var(--ink-2); }
+.cv-entry__link a { border-bottom: 0.6pt solid #b5b5b5; }
+.cv-entry__link::before { content: "Ver: "; font-style: italic; }
+
+/* ---------- Competencias e idiomas (dos columnas con puntos guía) ---------- */
+.cv-leaders { display: grid; grid-template-columns: 1fr 1fr; column-gap: 9mm; row-gap: 1.4pt; }
+.cv-leaders > div { display: flex; align-items: baseline; font-size: 9.8pt; }
+.cv-leaders dt { flex: none; }
+.cv-leaders .cv-leader { margin: 0 4pt; }
+.cv-leaders dd { flex: none; font-style: italic; font-weight: 600; text-align: right; }
+.cv-sec--langs .cv-leaders { grid-template-columns: repeat(4, 1fr); column-gap: 6mm; }
+
+@media print {
+  body { background: #fff; }
+  .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; overflow: hidden; }
+}

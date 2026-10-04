@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lava Entropy RNG — Javier Roman Heider</title>
+<meta name="description" content="Entropía criptográfica a partir del movimiento caótico de una lámpara de lava. Caso de estudio de Javier Roman Heider.">
+<link rel="canonical" href="https://javier-roman.github.io/trabajos/lava-entropy-rng.html">
+<meta name="theme-color" content="#08080A">
+<meta name="color-scheme" content="dark">
+<meta name="author" content="Javier Roman Heider">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Javier Roman Heider">
+<meta property="og:title" content="Lava Entropy RNG — Javier Roman Heider">
+<meta property="og:description" content="Entropía criptográfica a partir del movimiento caótico de una lámpara de lava. Caso de estudio de Javier Roman Heider.">
+<meta property="og:url" content="https://javier-roman.github.io/trabajos/lava-entropy-rng.html">
+<meta property="og:image" content="https://javier-roman.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Escena 3D de un puesto de trabajo con un terminal encendido, sobre fondo negro.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lava Entropy RNG — Javier Roman Heider">
+<meta name="twitter:description" content="Entropía criptográfica a partir del movimiento caótico de una lámpara de lava. Caso de estudio de Javier Roman Heider.">
+<meta name="twitter:image" content="https://javier-roman.github.io/assets/og.jpg">
+<link rel="icon" href="../assets/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preload" href="../fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/main.css">
+<script>(function(d,w){var h=d.documentElement,m=function(q){return w.matchMedia(q).matches};h.classList.remove('no-js');h.classList.add('js');var r=m('(prefers-reduced-motion: reduce)');if(!r)h.classList.add('motion');if(!r&&m('(min-width: 1000px) and (min-height: 600px)')&&d.querySelector&&false)h.classList.add('pin');})(document,window);</script>
+<script type="module" src="../js/main.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Javier Roman Heider","url":"https://javier-roman.github.io/","jobTitle":"Técnico en sistemas, redes y ciberseguridad","email":"mailto:javieroman1972@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Badalona","addressRegion":"Barcelona","addressCountry":"ES"},"sameAs":["https://github.com/Javier-roman","https://www.linkedin.com/in/javier-roman-heider-368475400/"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"ENTI-UB · Universitat de Barcelona"},{"@type":"EducationalOrganization","name":"IFP Barcelona"}],"knowsLanguage":["es","ca","en","de"]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div class="atmos" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../#inicio" aria-label="javier-roman: ir al inicio"><span>javier-roman</span><span class="brand__path">~$</span><span class="brand__caret" aria-hidden="true"></span></a>
+  <nav class="nav" aria-label="Principal"><a href="../#trabajos">Trabajos</a><a href="../#historia">Historia</a><a href="../#sobre-mi">Sobre mí</a><a href="../#contacto">Contacto</a></nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-open="Menú" data-close="Cerrar"><span class="menu-toggle__label">Menú</span><span class="menu-toggle__bars" aria-hidden="true"></span></button>
+</header>
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <nav aria-label="Menú móvil"><a class="mobile-menu__item" href="../#trabajos">Trabajos</a><a class="mobile-menu__item" href="../#historia">Historia</a><a class="mobile-menu__item" href="../#sobre-mi">Sobre mí</a><a class="mobile-menu__item" href="../#contacto">Contacto</a></nav>
+  <div class="mobile-menu__meta">
+    <a href="https://github.com/Javier-roman" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/javier-roman-heider-368475400/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="../cv/Javier_Roman_Heider_CV.pdf" download="Javier_Roman_Heider_CV.pdf">Descargar CV en PDF</a>
+  </div>
+</div>
+<nav class="social-rail" aria-label="Redes">
+  <a href="https://github.com/Javier-roman" target="_blank" rel="noopener" aria-label="GitHub de Javier Roman Heider"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+  <a href="https://www.linkedin.com/in/javier-roman-heider-368475400/" target="_blank" rel="noopener" aria-label="LinkedIn de Javier Roman Heider"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.75H3V9.75Zm6.5 0h3.84v1.6h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.14v6.09h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.86v5.49h-4V9.75Z"/></svg></a>
+</nav>
+<aside aria-label="CV"><a class="cv-link" href="../cv/Javier_Roman_Heider_CV.pdf" download="Javier_Roman_Heider_CV.pdf" aria-label="Descargar CV en PDF">CV <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v13M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg></a></aside>
+<main id="main">
+  <article class="case">
+    <header class="container case-hero">
+      <nav class="crumbs" aria-label="Ruta">
+        <a href="../#trabajos"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg> Todos los trabajos</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Lava Entropy RNG</span>
+      </nav>
+      <div class="case-hero__chips"><span class="chip">Desarrollo</span><span class="chip chip--live">Publicado</span></div>
+      <h1 class="case-hero__title" style="--len:7" data-scramble>Lava Entropy RNG</h1>
+      <p class="case-hero__one">Entropía criptográfica a partir del movimiento caótico de una lámpara de lava.</p>
+      <dl class="facts"><div><dt>Tipo</dt><dd>Proyecto propio</dd></div><div><dt>Lenguaje</dt><dd>Python 3</dd></div><div><dt>Dónde corre</dt><dd>VM en mi servidor Proxmox</dd></div><div><dt>Licencia</dt><dd>MIT</dd></div></dl>
+      <div class="case-hero__actions"><a class="btn" href="https://github.com/Javier-roman/lava-entropy" target="_blank" rel="noopener">Ver el repositorio <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" stroke="currentColor" stroke-width="1.5"/></svg></a><a class="link-arrow" href="lava-market.html">LAVA_MARKET, la plataforma que lo usa <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a><a class="link-arrow" href="../#trabajos">Todos los trabajos <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+    </header>
+    <div class="container case-visual reveal">
+      <div class="case-visual__panel vis-code">
+      <div class="codeblock" tabindex="0" role="region" aria-label="Código: entropy.py"><div class="codeblock__bar"><span class="codeblock__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>entropy.py</span></div><pre><code><span class="ln">diff = cv2.absdiff(gray, prev_gray)</span><span class="ln"> </span><span class="ln"><span class="tok-c"># solo píxeles con movimiento real (&gt; 10)</span></span><span class="ln">_, thresh = cv2.threshold(diff, <span class="tok-n">10</span>, <span class="tok-n">255</span>, cv2.THRESH_BINARY)</span><span class="ln">motion_pixels = diff[thresh &gt; <span class="tok-n">0</span>]</span><span class="ln"> </span><span class="ln"><span class="tok-k">if</span> <span class="tok-k">len</span>(motion_pixels) &gt; <span class="tok-n">0</span>:</span><span class="ln">    entropy_buffer.extend(motion_pixels.tobytes())</span></code></pre></div>
+      <div><p class="featured__big">≥ 6,5</p><p class="featured__bigLabel">bits/byte de entropía de Shannon, o el lote no se escribe</p></div>
+    </div><p class="case-visual__cap">entropy.py: el núcleo del extractor (código real del repositorio)</p>
+    </div>
+    <div class="container case-body">
+      <section class="case-sec reveal" aria-labelledby="reto">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">01</p><h2 class="case-sec__title" id="reto">El reto</h2></div></div>
+        <div><div class="prose"><p>Un ordenador es determinista, así que generar aleatoriedad de verdad es más difícil de lo que parece. Cloudflare lo resuelve en producción grabando lámparas de lava y convirtiendo su caos en entropía.</p><p>Quise montar mi propia versión de principio a fin, con una webcam corriente y un script que convirtiera ese movimiento en bytes útiles para criptografía.</p></div></div>
+      </section>
+      <section class="case-sec reveal" aria-labelledby="hice">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">02</p><h2 class="case-sec__title" id="hice">Lo que hice</h2></div></div>
+        <div><div class="prose"><p>Un script en Python con OpenCV captura <strong>150 frames</strong> de una webcam que apunta a la lámpara. Convierte cada frame a escala de grises, lo compara con el anterior y se queda solo con los píxeles que se mueven de verdad (umbral de 10 para filtrar el ruido). Esas diferencias son impredecibles: dependen del caos del fluido.</p><p>Antes de escribir nada, mide la calidad. Si la entropía de Shannon no llega a <strong>6,5 bits/byte</strong> (por ejemplo, porque la lámpara está fría), el lote se descarta. Si pasa, se escribe de forma atómica (<code>.tmp</code> → rename) junto a un fichero <code>.meta</code> con los frames y los bytes del lote.</p><p>Corre en una máquina virtual de mi servidor Proxmox. Puede listar cámaras, probar un único lote o trabajar en continuo (un lote cada 5 minutos), y trae un script que usa el CSPRNG del sistema para probarlo todo sin cámara.</p><p>Lo integré en <a href="lava-market.html">LAVA_MARKET</a>, mi tienda online en Laravel: un comando <code>entropy:ingest</code> valida cada lote y lo guarda como pool, y un servicio lo mezcla con HMAC-SHA256 para generar licencias y tickets. Si la lámpara no está disponible, se usa el CSPRNG del sistema. La integración estuvo en producción durante el proyecto de final de ciclo.</p></div><figure class="diagram"><svg class="d-h" viewBox="0 0 584 224" style="max-width:584px" role="img" aria-labelledby="dg-lava-entropy-rng-t dg-lava-entropy-rng-d"><title id="dg-lava-entropy-rng-t">Del movimiento de la lámpara a un lote de entropía validado</title><desc id="dg-lava-entropy-rng-d">Webcam (150 frames por lote) → Escala de grises (frame a frame) → Diferencia (cv2.absdiff) → Umbral &gt; 10 (solo movimiento real) → Shannon ≥ 6,5 (si no, se descarta) → entropy.txt (escritura atómica + .meta)</desc><style>.n{fill:#0d0d10;stroke:rgba(237,237,239,.34);stroke-width:1}.n2{fill:rgba(180,165,255,.1);stroke:#b4a5ff;stroke-width:1}.l{font:700 15px Archivo,system-ui,sans-serif;fill:#ededef}.s{font:500 11.5px 'JetBrains Mono',monospace;fill:#8b8b95}.a{stroke:#b4a5ff;stroke-width:1.4;fill:none}.ah{fill:#b4a5ff}.g{fill:none;stroke:rgba(237,237,239,.22);stroke-dasharray:4 5}.c{font:500 12px 'JetBrains Mono',monospace;fill:#b4a5ff}.e{stroke:rgba(237,237,239,.45);stroke-width:1.2;fill:none}.e2{stroke:#b4a5ff;stroke-width:1.2;fill:none}</style><rect x="0.5" y="2.5" width="167" height="85" class="n"/><text x="84" y="40.5" class="l" text-anchor="middle">Webcam</text><text x="84" y="62.5" class="s" text-anchor="middle">150 frames por lote</text><path class="a" d="M173 45h26"/><path class="ah" d="M203 41l6 4-6 4z"/><rect x="208.5" y="2.5" width="167" height="85" class="n"/><text x="292" y="40.5" class="l" text-anchor="middle">Escala de grises</text><text x="292" y="62.5" class="s" text-anchor="middle">frame a frame</text><path class="a" d="M381 45h26"/><path class="ah" d="M411 41l6 4-6 4z"/><rect x="416.5" y="2.5" width="167" height="85" class="n"/><text x="500" y="40.5" class="l" text-anchor="middle">Diferencia</text><text x="500" y="62.5" class="s" text-anchor="middle">cv2.absdiff</text><path class="a" d="M500 93v34"/><path class="ah" d="M496 131l4 6 4-6z"/><rect x="416.5" y="136.5" width="167" height="85" class="n"/><text x="500" y="174.5" class="l" text-anchor="middle">Umbral &gt; 10</text><text x="500" y="196.5" class="s" text-anchor="middle">solo movimiento real</text><path class="a" d="M411 179h-26"/><path class="ah" d="M381 175l-6 4 6 4z"/><rect x="208.5" y="136.5" width="167" height="85" class="n"/><text x="292" y="174.5" class="l" text-anchor="middle">Shannon ≥ 6,5</text><text x="292" y="196.5" class="s" text-anchor="middle">si no, se descarta</text><path class="a" d="M203 179h-26"/><path class="ah" d="M173 175l-6 4 6 4z"/><rect x="0.5" y="136.5" width="167" height="85" class="n2"/><text x="84" y="167" class="l" text-anchor="middle">entropy.txt</text><text x="84" y="189" class="s" text-anchor="middle">escritura atómica +</text><text x="84" y="204" class="s" text-anchor="middle">.meta</text></svg><svg class="d-v" viewBox="0 0 300 538" role="img" aria-labelledby="dg-lava-entropy-rng-vt dg-lava-entropy-rng-vd"><title id="dg-lava-entropy-rng-vt">Del movimiento de la lámpara a un lote de entropía validado</title><desc id="dg-lava-entropy-rng-vd">Webcam (150 frames por lote) → Escala de grises (frame a frame) → Diferencia (cv2.absdiff) → Umbral &gt; 10 (solo movimiento real) → Shannon ≥ 6,5 (si no, se descarta) → entropy.txt (escritura atómica + .meta)</desc><style>.n{fill:#0d0d10;stroke:rgba(237,237,239,.34);stroke-width:1}.n2{fill:rgba(180,165,255,.1);stroke:#b4a5ff;stroke-width:1}.l{font:700 15px Archivo,system-ui,sans-serif;fill:#ededef}.s{font:500 11.5px 'JetBrains Mono',monospace;fill:#8b8b95}.a{stroke:#b4a5ff;stroke-width:1.4;fill:none}.ah{fill:#b4a5ff}.g{fill:none;stroke:rgba(237,237,239,.22);stroke-dasharray:4 5}.c{font:500 12px 'JetBrains Mono',monospace;fill:#b4a5ff}.e{stroke:rgba(237,237,239,.45);stroke-width:1.2;fill:none}.e2{stroke:#b4a5ff;stroke-width:1.2;fill:none}</style><rect x="0.5" y="2.5" width="299" height="63" class="n"/><text x="150" y="29" class="l" text-anchor="middle">Webcam</text><text x="150" y="48" class="s" text-anchor="middle">150 frames por lote</text><path class="a" d="M150 71v16"/><path class="ah" d="M146 91l4 6 4-6z"/><rect x="0.5" y="96.5" width="299" height="63" class="n"/><text x="150" y="123" class="l" text-anchor="middle">Escala de grises</text><text x="150" y="142" class="s" text-anchor="middle">frame a frame</text><path class="a" d="M150 165v16"/><path class="ah" d="M146 185l4 6 4-6z"/><rect x="0.5" y="190.5" width="299" height="63" class="n"/><text x="150" y="217" class="l" text-anchor="middle">Diferencia</text><text x="150" y="236" class="s" text-anchor="middle">cv2.absdiff</text><path class="a" d="M150 259v16"/><path class="ah" d="M146 279l4 6 4-6z"/><rect x="0.5" y="284.5" width="299" height="63" class="n"/><text x="150" y="311" class="l" text-anchor="middle">Umbral &gt; 10</text><text x="150" y="330" class="s" text-anchor="middle">solo movimiento real</text><path class="a" d="M150 353v16"/><path class="ah" d="M146 373l4 6 4-6z"/><rect x="0.5" y="378.5" width="299" height="63" class="n"/><text x="150" y="405" class="l" text-anchor="middle">Shannon ≥ 6,5</text><text x="150" y="424" class="s" text-anchor="middle">si no, se descarta</text><path class="a" d="M150 447v16"/><path class="ah" d="M146 467l4 6 4-6z"/><rect x="0.5" y="472.5" width="299" height="63" class="n2"/><text x="150" y="499" class="l" text-anchor="middle">entropy.txt</text><text x="150" y="518" class="s" text-anchor="middle">escritura atómica + .meta</text></svg><figcaption>Del movimiento de la lámpara a un lote de entropía validado</figcaption></figure></div>
+      </section>
+      <section class="case-sec reveal" aria-labelledby="stack">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">03</p><h2 class="case-sec__title" id="stack">Stack y herramientas</h2></div></div>
+        <div><div class="stack-groups"><div><h3>Lenguaje y librerías</h3><ul class="tags"><li class="tag">Python 3</li><li class="tag">OpenCV</li><li class="tag">NumPy</li><li class="tag">argparse</li></ul></div><div><h3>Técnicas</h3><ul class="tags"><li class="tag">Entropía de Shannon</li><li class="tag">Escritura atómica</li><li class="tag">Fallback a CSPRNG</li></ul></div><div><h3>Integración</h3><ul class="tags"><li class="tag">Laravel (PHP)</li><li class="tag">HMAC-SHA256</li></ul></div><div><h3>Hardware</h3><ul class="tags"><li class="tag">Webcam USB</li><li class="tag">Lámpara de lava</li><li class="tag">Servidor Proxmox (VM)</li></ul></div></div></div>
+      </section>
+      <section class="case-sec reveal" aria-labelledby="resultado">
+        <div class="case-sec__head"><div class="case-sec__sticky"><p class="case-sec__num">04</p><h2 class="case-sec__title" id="resultado">Resultado y lo que aprendí</h2></div></div>
+        <div><div class="prose"><p>Un extractor de entropía física que funciona con una webcam corriente y que se niega a escribir si la calidad no es suficiente. Código abierto en GitHub con licencia MIT.</p></div><div class="case-learned"><h3>Lo que aprendí</h3><p>Que la aleatoriedad no se da por supuesta: se mide. Y que en seguridad lo que de verdad importa son los detalles aburridos, como escribir de forma atómica o tener siempre un plan B.</p></div></div>
+      </section>
+    </div>
+    <nav class="container pager" aria-label="Otros trabajos">
+      <a href="cyberos.html"><span>← Anterior</span><b>CyberOS</b></a>
+      <a href="lava-market.html"><span>Siguiente →</span><b>LAVA_MARKET</b></a>
+    </nav>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="container site-footer__row">
+    <span class="site-footer__exit">javier-roman ~$ exit</span>
+    <span>Construyo, rompo y aprendo.</span>
+    <span>© 2026 Javier Roman Heider</span>
+    <a href="../#inicio">Volver arriba ↑</a>
+  </div>
+</footer>
+<div class="grain" aria-hidden="true"></div>
+</body>
+</html>
